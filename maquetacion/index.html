@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AndaluciThmo</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <header>
+    <div class="conteiner-prima">
+        <div class="logo-conteiner">
+            <img src="./img/anda-logo-redondo.png" alt="Logo de la app" class="logo" />
+        </div>
+
+        <div class="anda-conteiner">
+            <h1>Andaluci<span class="thmo">Thmo</span></h1>
+        </div>
+
+        <div id="google-btn"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="word-card fade-in">
+      <h2 id="word">arrecío</h2>
+      <p class="definition" id="definition">Sentir mucho frío, estar helado.</p>
+      <p class="example" id="example">Ej: “Me he quedao arrecío esta mañana con la rasca que hacía.”</p>
+
+      <button id="play-audio">🔊 Escuchar</button>
+      <button id="favorite-btn">⭐ Guardar favorito</button>
+    </section>
+
+    <section class="rating">
+      <p>¿Te gusta la app?</p>
+      <div id="stars">
+        ⭐⭐⭐⭐⭐
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Un thmo nuevo cada día 🌞</p>
+  </footer>
+  <script src="letras.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

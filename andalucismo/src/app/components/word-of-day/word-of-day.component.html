@@ -1,0 +1,34 @@
+
+<div class="contenedor-header"><header>
+    <h1>A n d a l u c í<span class="thmo"> - T h m o</span></h1>
+    <div id="google-btn"></div>
+  </header>
+</div>
+
+  <main>
+    <div class="thmo-contenedor">
+    <section class="word-card">
+      <h2>{{ todayThmo.palabra }}</h2>
+      <br/>
+      <p class="definition">{{ todayThmo.definicion }}</p>
+      <br/>
+      <p class="example">Ej: “{{ todayThmo.ejemplo }}”</p>
+      <br/>
+      <button (click)="guardarFavorito()">⭐ Guardar favorito</button>
+    </section>
+
+    
+
+    
+      <!-- <button (click)="reproducirAudio()">🔊 Escuchar</button> -->
+      
+    </div>
+  
+    <section class="rating">
+      <p>¿Te gusta la app?</p>
+      <div id="stars" (click)="valorar()">⭐⭐⭐⭐⭐</div>
+    </section>
+  </main>
+  
+
+  
