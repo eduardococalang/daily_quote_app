@@ -2,10 +2,11 @@ import { CommonModule, JsonPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { glosario, Thmo } from '../../data/glosario';
 import { FavoritosService } from '../../services/favoritos.service';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-word-of-day',
-  imports: [CommonModule],
+  imports: [CommonModule, MatCardModule],
   providers: [FavoritosService],
   templateUrl: './word-of-day.component.html',
   styleUrl: './word-of-day.component.scss'
@@ -30,10 +31,14 @@ export class WordOfDayComponent {
   }
 
   getThmoOfTheDay(): Thmo {
+    const startDate = new Date(2024, 0, 1); // 1 de enero 2024
     const today = new Date();
-    const index = today.getDate() % glosario.length; 
-    return glosario[index]; // Devuelve un Thmo basado en el día del mes
+    const diffTime = Math.abs(today.getTime() - startDate.getTime());
+    const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+    const index = diffDays % glosario.length;
+    return glosario[index+2];
   }
+  
 
 
   reproducirAudio() {
@@ -43,21 +48,34 @@ export class WordOfDayComponent {
 
   guardarFavorito() {
     const favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
+
     if (favoritos.includes(this.palabra)) {
-      return;
+     alert("Palabra ya guardada como favorita");
+     return
     }
 
-    if(favoritos === (this.palabra)){
-      alert("Palabra ya guardada como favorita");
-    }
-
-    if (!favoritos.includes(this.palabra)){
       favoritos.push(this.palabra);
       localStorage.setItem('favoritos', JSON.stringify(favoritos));
       alert("Palabra guardada como favorita");  
-    }
-   
+    
 }
+
+compartirAforismo() {
+  const texto = `"${this.palabra}"\n\nDefinición: ${this.definicion}\nEjemplo: ${this.ejemplo}`;
+  navigator.clipboard.writeText(texto).then(() => {
+    alert('¡Aforismo copiado al portapapeles!');
+  }).catch(err => {
+    alert('Error al copiar el aforismo.');
+  });
+}
+
+compartirEnWhatsApp() {
+  const texto = `"${this.palabra}"\n\nDefinición: ${this.definicion}\nEjemplo: ${this.ejemplo}`;
+  const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+  window.open(url, '_blank');
+}
+
+
 
 valorar(){
   alert("Gracias por valorar esta palabra");

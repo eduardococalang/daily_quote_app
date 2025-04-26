@@ -4,8 +4,7 @@
     <div id="google-btn"></div>
   </header>
 </div>
-
-  <main>
+<main>
     <div class="thmo-contenedor">
     <section class="word-card">
       <h2>{{ todayThmo.palabra }}</h2>
@@ -15,12 +14,12 @@
       <p class="example">Ej: “{{ todayThmo.ejemplo }}”</p>
       <br/>
       <button (click)="guardarFavorito()">⭐ Guardar favorito</button>
+      <button (click)="compartirAforismo()">📋 Compartir aforismo</button>
+      <button (click)="compartirEnWhatsApp()">📱 Compartir en WhatsApp</button>
+
+
     </section>
-
-    
-
-    
-      <!-- <button (click)="reproducirAudio()">🔊 Escuchar</button> -->
+    <!--<button (click)="reproducirAudio()">🔊 Escuchar</button>--> 
       
     </div>
   
@@ -28,7 +27,9 @@
       <p>¿Te gusta la app?</p>
       <div id="stars" (click)="valorar()">⭐⭐⭐⭐⭐</div>
     </section>
+
+
   </main>
   
 
-  
+
