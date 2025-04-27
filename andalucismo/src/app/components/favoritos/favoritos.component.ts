@@ -8,6 +8,9 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { FavoritosService } from '../../services/favoritos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FavoritoModalComponent } from '../favorito-modal/favorito-modal.component';
+import { Favorito } from '../../models/favorito.model';
+
+
 
 
 
@@ -31,10 +34,11 @@ import { FavoritoModalComponent } from '../favorito-modal/favorito-modal.compone
   ]
 })
 export class FavoritosComponent {
-  favoritos: string[] = [];
+  favoritos: Favorito[] = [];
   favoritosKey: string = '';
   isLogged = false;
   userEmail: string | null = null;
+  data: any;
 
   constructor(
     private snackBar: MatSnackBar,
@@ -77,7 +81,7 @@ export class FavoritosComponent {
   }
 
   compartirFavoritoWhatsApp(favorito: string) {
-    const texto = `Mira este aforismo que guardé: "${favorito}"`;
+    const texto = `⭐ ${this.data.palabra}\n\n📖 Definición: ${this.data.definicion}\n✍️ Ejemplo: ${this.data.ejemplo}`;
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
   }
@@ -91,9 +95,9 @@ export class FavoritosComponent {
   }
 
   //abrir modal
-  abrirFavorito(favorito: string) {
+  abrirFavorito(favorito: Favorito) {
     this.dialog.open(FavoritoModalComponent, {
-      data: { favorito },
+      data: favorito ,
       width: '400px', // puedes ajustar el tamaño si quieres
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms'

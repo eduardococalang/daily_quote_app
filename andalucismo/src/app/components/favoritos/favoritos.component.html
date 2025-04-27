@@ -6,14 +6,15 @@
     <ng-container *ngIf="favoritos.length > 0; else noFavoritos">
       <mat-card *ngFor="let favorito of favoritos; let i = index" class="favorito-card" (click)="abrirFavorito(favorito)">
         <mat-card-content>
-          {{ favorito }}
+          {{ favorito.palabra }}
         </mat-card-content>
-
+      
         <mat-card-actions>
           <button mat-button color="warn" (click)="eliminarFavorito(i); $event.stopPropagation()">🗑️ Eliminar</button>
-          <button mat-button color="primary" (click)="compartirFavoritoWhatsApp(favorito); $event.stopPropagation()">📱 Compartir</button>
+          <button mat-button color="primary" (click)="compartirFavoritoWhatsApp(favorito.palabra); $event.stopPropagation()">📱 Compartir</button>
         </mat-card-actions>
       </mat-card>
+      
     </ng-container>
 
     <ng-template #noFavoritos>

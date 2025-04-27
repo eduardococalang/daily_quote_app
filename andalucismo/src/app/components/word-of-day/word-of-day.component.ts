@@ -8,6 +8,8 @@ import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ChangeDetectorRef } from '@angular/core';
+import { Favorito } from '../../models/favorito.model';
+
 
 
 
@@ -79,7 +81,7 @@ export class WordOfDayComponent {
     const diffTime = Math.abs(today.getTime() - startDate.getTime());
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const index = diffDays % glosario.length;
-    return glosario[index+1];
+    return glosario[index+19];
   }
   
 
@@ -94,19 +96,25 @@ export class WordOfDayComponent {
       this.mostrarNotificacion("⚠️ Debes iniciar sesión para guardar favoritos");
       return;
     }
-  
+    
     if (!this.user?.email) {
       this.mostrarNotificacion("⚠️ Error con el usuario");
       return;
     }
   
     if (!this.favoritosService.isFavorito(this.palabra)) {
-      this.favoritosService.addFavorito(this.palabra);
+      const favorito: Favorito = {
+        palabra: this.palabra,
+        definicion: this.definicion,
+        ejemplo: this.ejemplo
+      };
+      this.favoritosService.addFavorito(favorito);
       this.mostrarNotificacion("✅ Palabra guardada como favorita");
     } else {
       this.mostrarNotificacion("⚠️ Palabra ya estaba guardada");
     }
   }
+  
   
   
 compartirAforismo() {

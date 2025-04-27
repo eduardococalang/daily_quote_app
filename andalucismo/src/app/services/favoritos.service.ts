@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-
+import { Favorito } from '../models/favorito.model'; // importa el modelo
 @Injectable({
   providedIn: 'root',
 })
 export class FavoritosService {
-  private favoritosSubject = new BehaviorSubject<string[]>([]);
+  private favoritosSubject = new BehaviorSubject<Favorito[]>([]);
   public readonly favoritos$ = this.favoritosSubject.asObservable();
 
   private storageKey = '';
@@ -24,14 +24,14 @@ export class FavoritosService {
     }
   }
 
-  private updateFavoritos(favs: string[]) {
+  private updateFavoritos(favs: Favorito[]) {
     if (this.storageKey) {
       localStorage.setItem(this.storageKey, JSON.stringify(favs));
       this.favoritosSubject.next(favs);
     }
   }
 
-  getFavoritos(): string[] {
+  getFavoritos(): Favorito[] {
     if (this.storageKey) {
       const stored = localStorage.getItem(this.storageKey);
       return stored ? JSON.parse(stored) : [];
@@ -39,21 +39,22 @@ export class FavoritosService {
     return [];
   }
 
-  addFavorito(palabra: string) {
+  addFavorito(favorito: Favorito) {
     const current = this.getFavoritos();
-    if (!current.includes(palabra)) {
-      const updated = [...current, palabra];
+    const existe = current.some(f => f.palabra === favorito.palabra);
+    if (!existe) {
+      const updated = [...current, favorito];
       this.updateFavoritos(updated);
     }
   }
 
   removeFavorito(palabra: string) {
     const current = this.getFavoritos();
-    const updated = current.filter(fav => fav !== palabra);
+    const updated = current.filter(fav => fav.palabra !== palabra);
     this.updateFavoritos(updated);
   }
 
   isFavorito(palabra: string): boolean {
-    return this.getFavoritos().includes(palabra);
+    return this.getFavoritos().some(fav => fav.palabra === palabra);
   }
 }
