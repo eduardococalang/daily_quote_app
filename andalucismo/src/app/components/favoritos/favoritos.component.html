@@ -1,0 +1,29 @@
+<div *ngIf="isLogged" class="favoritos-list-cards">
+
+  <h3>⭐ Tus favoritos:</h3>
+
+  <div class="favoritos-grid">
+    <ng-container *ngIf="favoritos.length > 0; else noFavoritos">
+      <mat-card *ngFor="let favorito of favoritos; let i = index" class="favorito-card">
+        <mat-card-content>
+          {{ favorito }}
+        </mat-card-content>
+
+        <mat-card-actions>
+          <button mat-button color="warn" (click)="eliminarFavorito(i)">🗑️ Eliminar</button>
+          <button mat-button color="primary" (click)="compartirFavoritoWhatsApp(favorito)">📱 Compartir</button>
+        </mat-card-actions>
+      </mat-card>
+    </ng-container>
+
+    <ng-template #noFavoritos>
+      <mat-card class="favorito-card">
+        <mat-card-content>
+          <p>😢 Todavía no tienes favoritos guardados.</p>
+          <p>¡Guarda tus palabras favoritas pulsando en ⭐!</p>
+        </mat-card-content>
+      </mat-card>
+    </ng-template>
+  </div>
+
+</div>

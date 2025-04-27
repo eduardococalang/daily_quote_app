@@ -29,22 +29,6 @@
       </div>
     </div>
     </div>
-
-    <div *ngIf="isLogged && favoritos.length > 0" class="favoritos-list-cards">
-      <h3>⭐ Tus favoritos:</h3>
-      <div class="favoritos-grid">
-        <mat-card *ngFor="let favorito of favoritos; let i = index" [@fadeAnimation] class="favorito-card">
-          <mat-card-content>
-            {{ favorito }}
-          </mat-card-content>
-    
-          <mat-card-actions>
-            <button mat-button color="warn" (click)="eliminarFavorito(i)">🗑️ Eliminar</button>
-            <button mat-button color="primary" (click)="compartirFavoritoWhatsApp(favorito)">📱 Compartir</button>
-          </mat-card-actions>
-        </mat-card>
-      </div>
-    </div>
     
   
     <section class="rating">

@@ -1,4 +1,3 @@
-// favorites.service.ts
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 
@@ -6,29 +5,51 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class FavoritosService {
-  private readonly storageKey = 'favoritos';
-  private readonly favoritosSubject = new BehaviorSubject<string[]>(this.loadFavoritos());
+  private favoritosSubject = new BehaviorSubject<string[]>([]);
   public readonly favoritos$ = this.favoritosSubject.asObservable();
 
-  private loadFavoritos(): string[] {
-    const stored = localStorage.getItem(this.storageKey);
-    return stored ? JSON.parse(stored) : [];
+  private storageKey = '';
+
+  constructor() {}
+
+  setUser(email: string | null) {
+    if (email) {
+      this.storageKey = `favoritos_${email}`;
+      const stored = localStorage.getItem(this.storageKey);
+      const favoritos = stored ? JSON.parse(stored) : [];
+      this.favoritosSubject.next(favoritos);
+    } else {
+      this.storageKey = '';
+      this.favoritosSubject.next([]);
+    }
   }
 
   private updateFavoritos(favs: string[]) {
-    localStorage.setItem(this.storageKey, JSON.stringify(favs));
-    this.favoritosSubject.next(favs);
+    if (this.storageKey) {
+      localStorage.setItem(this.storageKey, JSON.stringify(favs));
+      this.favoritosSubject.next(favs);
+    }
   }
 
   getFavoritos(): string[] {
-    return this.loadFavoritos();
+    if (this.storageKey) {
+      const stored = localStorage.getItem(this.storageKey);
+      return stored ? JSON.parse(stored) : [];
+    }
+    return [];
   }
 
-  toggleFavorito(palabra: string) {
+  addFavorito(palabra: string) {
     const current = this.getFavoritos();
-    const updated = current.includes(palabra)
-      ? current.filter(fav => fav !== palabra)
-      : [...current, palabra];
+    if (!current.includes(palabra)) {
+      const updated = [...current, palabra];
+      this.updateFavoritos(updated);
+    }
+  }
+
+  removeFavorito(palabra: string) {
+    const current = this.getFavoritos();
+    const updated = current.filter(fav => fav !== palabra);
     this.updateFavoritos(updated);
   }
 

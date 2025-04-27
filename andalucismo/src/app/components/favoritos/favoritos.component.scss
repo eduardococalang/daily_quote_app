@@ -6,3 +6,30 @@
     height: 30px;
     margin-top: 0px;
 }
+
+.favoritos-grid{
+    color: aliceblue;
+}
+
+.favoritos-list-cards {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2rem;
+  }
+  
+  .favoritos-grid {
+    color:antiquewhite;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1rem;
+    width: 100%;
+    max-width: 900px;
+    margin-top: 1rem;
+    padding: 1rem;
+  }
+  
+  .favorito-card {
+    padding: 1rem;
+  }
+  
