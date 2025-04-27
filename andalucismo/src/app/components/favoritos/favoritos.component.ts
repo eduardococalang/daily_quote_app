@@ -6,6 +6,9 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 import { FavoritosService } from '../../services/favoritos.service';
+import { MatDialog } from '@angular/material/dialog';
+import { FavoritoModalComponent } from '../favorito-modal/favorito-modal.component';
+
 
 
 
@@ -36,7 +39,8 @@ export class FavoritosComponent {
   constructor(
     private snackBar: MatSnackBar,
     private authService: SocialAuthService,
-    private favoritosService: FavoritosService
+    private favoritosService: FavoritosService,
+    private dialog: MatDialog
   ) {}
 
   ngOnInit() {
@@ -85,4 +89,15 @@ export class FavoritosComponent {
       verticalPosition: 'bottom',
     });
   }
+
+  //abrir modal
+  abrirFavorito(favorito: string) {
+    this.dialog.open(FavoritoModalComponent, {
+      data: { favorito },
+      width: '400px', // puedes ajustar el tamaño si quieres
+      enterAnimationDuration: '300ms',
+      exitAnimationDuration: '300ms'
+    });
+  }
+  
 }

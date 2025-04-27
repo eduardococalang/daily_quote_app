@@ -1,1 +1,13 @@
-<p>favorito-modal works!</p>
+<mat-card>
+    <mat-card-content>
+      <h2>⭐ Aforismo favorito</h2>
+      <p>{{ data.favorito }}</p>
+    </mat-card-content>
+  
+    <mat-card-actions>
+      <button mat-button (click)="copiarFavorito()">📋 Copiar</button>
+      <button mat-button color="primary" (click)="compartirFavorito()">📱 Compartir</button>
+      <button mat-button color="warn" (click)="cerrar()">Cerrar</button>
+    </mat-card-actions>
+  </mat-card>
+  
