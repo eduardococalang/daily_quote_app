@@ -5,16 +5,29 @@ import { FavoritosService } from '../../services/favoritos.service';
 import { MatCardModule } from '@angular/material/card';
 import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { trigger, transition, style, animate } from '@angular/animations';
 
 
 
 
 @Component({
   selector: 'app-word-of-day',
-  imports: [CommonModule, MatCardModule, GoogleSigninButtonModule],
-  providers: [FavoritosService],
+  imports: [CommonModule, MatCardModule, GoogleSigninButtonModule, MatSnackBarModule],
+  providers: [FavoritosService, MatSnackBar],
   templateUrl: './word-of-day.component.html',
   styleUrl: './word-of-day.component.scss',
+  animations: [
+    trigger('fadeAnimation', [
+      transition(':enter', [   // Cuando un elemento entra
+        style({ opacity: 0 }),
+        animate('300ms ease-out', style({ opacity: 1 }))
+      ]),
+      transition(':leave', [   // Cuando un elemento se elimina
+        animate('300ms ease-in', style({ opacity: 0 }))
+      ])
+    ])
+  ]
  
 })
 export class WordOfDayComponent {
@@ -30,7 +43,10 @@ export class WordOfDayComponent {
   favoritos: any;
   favoritosKey: string = '';
  
-  constructor(private authService: SocialAuthService) {
+  constructor(
+    private authService: SocialAuthService,
+    private snackBar: MatSnackBar
+  ) {
     this.todayThmo = this.getThmoOfTheDay();
     this.palabra = this.todayThmo.palabra;
     this.definicion = this.todayThmo.definicion;
@@ -58,7 +74,7 @@ export class WordOfDayComponent {
     const diffTime = Math.abs(today.getTime() - startDate.getTime());
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const index = diffDays % glosario.length;
-    return glosario[index+14];
+    return glosario[index+4];
   }
   
 
@@ -70,7 +86,7 @@ export class WordOfDayComponent {
 
   guardarFavorito() {
     if (!this.isLogged) {
-      alert('Debes iniciar sesión para guardar favoritos.');
+      this.mostrarNotificacion("DEBES INICIAR SESIÓN PARA GUARDAR FAVORITOS");
       return;
     }
   
@@ -78,18 +94,19 @@ export class WordOfDayComponent {
     if (!this.favoritos.includes(this.palabra)) {
       this.favoritos.push(this.palabra);  // 2. Añadir palabra a array existente
       localStorage.setItem(this.favoritosKey, JSON.stringify(this.favoritos)); // 3. Guardar el array entero
-      alert("Palabra guardada como favorita");
+      this.mostrarNotificacion("✅ Palabra guardada como favorita");
     } else {
-      alert("Palabra ya guardada como favorita");
+      this.mostrarNotificacion("✅ palabra favorita ya guardada");
+
     }
   }
 
 compartirAforismo() {
   const texto = `"${this.palabra}"\n\nDefinición: ${this.definicion}\nEjemplo: ${this.ejemplo}`;
   navigator.clipboard.writeText(texto).then(() => {
-    alert('¡Aforismo copiado al portapapeles!');
+    this.mostrarNotificacion("✅ Aforismo copiado al portapapeles");
   }).catch(err => {
-    alert('Error al copiar el aforismo.');
+    this.mostrarNotificacion("ERROR al copiar Aforismo al portapapeles");
   });
 }
 
@@ -104,7 +121,7 @@ compartirEnWhatsApp() {
 eliminarFavorito(index: number) {
     this.favoritos.splice(index, 1);
     localStorage.setItem('favoritos', JSON.stringify(this.favoritosKey));
-    alert('Favorito eliminado');
+    this.mostrarNotificacion("Favorito eliminado correctamente");
   }
 
   compartirFavoritoWhatsApp(favorito: string) {
@@ -113,12 +130,21 @@ eliminarFavorito(index: number) {
     window.open(url, '_blank');
   }
   
+  //metodo mostar notificaciones
+  mostrarNotificacion(mensaje: string) {
+    this.snackBar.open(mensaje, 'Cerrar', {
+      duration: 3000,
+      horizontalPosition: 'center',
+      verticalPosition: 'bottom',
+    });
+  }
+  
   
 
 
 
 valorar(){
-  alert("Gracias por valorar esta palabra");
+  this.mostrarNotificacion("✅GRACIAS POR VALORAR NUESTRO TRABAJO");
 }
 
 
