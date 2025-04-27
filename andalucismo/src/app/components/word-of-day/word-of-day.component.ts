@@ -7,6 +7,8 @@ import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/an
 import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { trigger, transition, style, animate } from '@angular/animations';
+import { ChangeDetectorRef } from '@angular/core';
+
 
 
 
@@ -45,13 +47,16 @@ export class WordOfDayComponent {
  
   constructor(
     private authService: SocialAuthService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private cdr: ChangeDetectorRef
+
   ) {
     this.todayThmo = this.getThmoOfTheDay();
     this.palabra = this.todayThmo.palabra;
     this.definicion = this.todayThmo.definicion;
     this.ejemplo = this.todayThmo.ejemplo;
     this.audioUrl = this.todayThmo.audioUrl;
+    
 
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -59,7 +64,9 @@ export class WordOfDayComponent {
 
       if(this.isLogged) {
         this.favoritosKey = 'favoritos_${this.user?.email}';
-        this.favoritos = JSON.parse(localStorage.getItem(this.favoritosKey) || '[]');
+        const favoritosGuardados = JSON.parse(localStorage.getItem(this.favoritosKey) || '[]');
+        this.favoritos = [...favoritosGuardados]; // clonado para forzar renderizado
+        this.cdr.detectChanges
       }else{
         this.favoritos = [];
         this.favoritosKey = '';
@@ -74,7 +81,7 @@ export class WordOfDayComponent {
     const diffTime = Math.abs(today.getTime() - startDate.getTime());
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const index = diffDays % glosario.length;
-    return glosario[index+4];
+    return glosario[index+10];
   }
   
 
@@ -94,6 +101,10 @@ export class WordOfDayComponent {
     if (!this.favoritos.includes(this.palabra)) {
       this.favoritos.push(this.palabra);  // 2. Añadir palabra a array existente
       localStorage.setItem(this.favoritosKey, JSON.stringify(this.favoritos)); // 3. Guardar el array entero
+
+      //clonar array favoritos para que no se modifique el original
+      this.favoritos = [...this.favoritos];
+
       this.mostrarNotificacion("✅ Palabra guardada como favorita");
     } else {
       this.mostrarNotificacion("✅ palabra favorita ya guardada");
