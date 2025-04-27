@@ -3,13 +3,19 @@ import { Component } from '@angular/core';
 import { glosario, Thmo } from '../../data/glosario';
 import { FavoritosService } from '../../services/favoritos.service';
 import { MatCardModule } from '@angular/material/card';
+import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
+
+
+
 
 @Component({
   selector: 'app-word-of-day',
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, MatCardModule, GoogleSigninButtonModule],
   providers: [FavoritosService],
   templateUrl: './word-of-day.component.html',
-  styleUrl: './word-of-day.component.scss'
+  styleUrl: './word-of-day.component.scss',
+ 
 })
 export class WordOfDayComponent {
 
@@ -19,13 +25,20 @@ export class WordOfDayComponent {
   audioUrl = "";
   isAuthenticated = false;
   todayThmo: Thmo;
+  user: SocialUser | null = null;
+  isLogged: boolean = false;
  
-  constructor() {
+  constructor(private authService: SocialAuthService) {
     this.todayThmo = this.getThmoOfTheDay();
     this.palabra = this.todayThmo.palabra;
     this.definicion = this.todayThmo.definicion;
     this.ejemplo = this.todayThmo.ejemplo;
     this.audioUrl = this.todayThmo.audioUrl;
+
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.isLogged = !!user;
+    });
 
 
   }
@@ -81,6 +94,10 @@ valorar(){
   alert("Gracias por valorar esta palabra");
 }
 
+
+  signOut(): void {
+    this.authService.signOut();
+  }
 
 
 
