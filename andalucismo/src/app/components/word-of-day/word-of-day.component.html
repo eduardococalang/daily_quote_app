@@ -13,7 +13,7 @@
       <br/>
       <p class="example">Ej: “{{ todayThmo.ejemplo }}”</p>
       <br/>
-      <button (click)="guardarFavorito()">⭐ Guardar favorito</button>
+      <button (click)="guardarFavorito()" *ngIf="isLogged">⭐ Guardar favorito</button>
       <button (click)="compartirAforismo()">📋 Compartir aforismo</button>
       <button (click)="compartirEnWhatsApp()">📱 Compartir en WhatsApp</button>
     </section>
@@ -27,9 +27,21 @@
         <p>Bienvenido, {{ user?.name }}!</p>
         <button (click)="signOut()">🚪 Cerrar sesión</button>
       </div>
-      
     </div>
     </div>
+
+    <div *ngIf="isLogged && favoritos.length > 0" class="favoritos-list">
+      <h3>⭐ Tus favoritos:</h3>
+      <ul>
+        <li *ngFor="let favorito of favoritos; let i = index">
+          {{ favorito }}
+          <button (click)="eliminarFavorito(i)">🗑️ Eliminar</button>
+          <button (click)="compartirFavoritoWhatsApp(favorito)">📱 Compartir</button>
+        </li>
+      </ul>
+    </div>
+    
+    
   
     <section class="rating">
       <p>¿Te gusta la app?</p>

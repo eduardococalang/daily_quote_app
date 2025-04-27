@@ -27,6 +27,8 @@ export class WordOfDayComponent {
   todayThmo: Thmo;
   user: SocialUser | null = null;
   isLogged: boolean = false;
+  favoritos: any;
+  favoritosKey: string = '';
  
   constructor(private authService: SocialAuthService) {
     this.todayThmo = this.getThmoOfTheDay();
@@ -38,8 +40,15 @@ export class WordOfDayComponent {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.isLogged = !!user;
-    });
 
+      if(this.isLogged) {
+        this.favoritosKey = 'favoritos_${this.user?.email}';
+        this.favoritos = JSON.parse(localStorage.getItem(this.favoritosKey) || '[]');
+      }else{
+        this.favoritos = [];
+        this.favoritosKey = '';
+      }
+    });
 
   }
 
@@ -49,7 +58,7 @@ export class WordOfDayComponent {
     const diffTime = Math.abs(today.getTime() - startDate.getTime());
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const index = diffDays % glosario.length;
-    return glosario[index+2];
+    return glosario[index+14];
   }
   
 
@@ -60,18 +69,20 @@ export class WordOfDayComponent {
   }
 
   guardarFavorito() {
-    const favoritos = JSON.parse(localStorage.getItem('favoritos') || '[]');
-
-    if (favoritos.includes(this.palabra)) {
-     alert("Palabra ya guardada como favorita");
-     return
+    if (!this.isLogged) {
+      alert('Debes iniciar sesión para guardar favoritos.');
+      return;
     }
-
-      favoritos.push(this.palabra);
-      localStorage.setItem('favoritos', JSON.stringify(favoritos));
-      alert("Palabra guardada como favorita");  
-    
-}
+  
+    // 1. Leer favoritos actuales de la memoria (this.favoritos), no del localStorage
+    if (!this.favoritos.includes(this.palabra)) {
+      this.favoritos.push(this.palabra);  // 2. Añadir palabra a array existente
+      localStorage.setItem(this.favoritosKey, JSON.stringify(this.favoritos)); // 3. Guardar el array entero
+      alert("Palabra guardada como favorita");
+    } else {
+      alert("Palabra ya guardada como favorita");
+    }
+  }
 
 compartirAforismo() {
   const texto = `"${this.palabra}"\n\nDefinición: ${this.definicion}\nEjemplo: ${this.ejemplo}`;
@@ -87,6 +98,22 @@ compartirEnWhatsApp() {
   const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
   window.open(url, '_blank');
 }
+
+//CRUD FAVORITOS
+
+eliminarFavorito(index: number) {
+    this.favoritos.splice(index, 1);
+    localStorage.setItem('favoritos', JSON.stringify(this.favoritosKey));
+    alert('Favorito eliminado');
+  }
+
+  compartirFavoritoWhatsApp(favorito: string) {
+    const texto = `Mira este aforismo que guardé: "${favorito}"`;
+    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+  }
+  
+  
 
 
 
