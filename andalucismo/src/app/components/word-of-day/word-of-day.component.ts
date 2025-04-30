@@ -9,10 +9,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { ChangeDetectorRef } from '@angular/core';
 import { Favorito } from '../../models/favorito.model';
-
-
-
-
+import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
 
 
 @Component({
@@ -51,7 +48,8 @@ export class WordOfDayComponent {
     private authService: SocialAuthService,
     private snackBar: MatSnackBar,
     private cdr: ChangeDetectorRef,
-    private favoritosService: FavoritosService
+    private favoritosService: FavoritosService,
+    private favoritosFirebaseService: FavoritosFirebaseService
 
   ) {
     this.todayThmo = this.getThmoOfTheDay();
@@ -109,6 +107,8 @@ export class WordOfDayComponent {
         ejemplo: this.ejemplo
       };
       this.favoritosService.addFavorito(favorito);
+      console.log("Favorito añadido:", favorito);
+      this.favoritosFirebaseService.incrementarFavorito(this.palabra);
       this.mostrarNotificacion("✅ Palabra guardada como favorita");
     } else {
       this.mostrarNotificacion("⚠️ Palabra ya estaba guardada");

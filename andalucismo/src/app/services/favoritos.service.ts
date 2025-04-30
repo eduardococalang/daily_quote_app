@@ -13,16 +13,19 @@ export class FavoritosService {
   constructor() {}
 
   setUser(email: string | null) {
-    if (email) {
-      this.storageKey = `favoritos_${email}`;
-      const stored = localStorage.getItem(this.storageKey);
-      const favoritos = stored ? JSON.parse(stored) : [];
-      this.favoritosSubject.next(favoritos);
-    } else {
-      this.storageKey = '';
-      this.favoritosSubject.next([]);
-    }
+    const newKey = email ? `favoritos_${email}` : '';
+  
+    if (this.storageKey === newKey) return;
+  
+    this.storageKey = newKey;
+  
+    const favoritos = email
+      ? JSON.parse(localStorage.getItem(this.storageKey) || '[]')
+      : [];
+  
+    this.favoritosSubject.next(favoritos);
   }
+  
 
   private updateFavoritos(favs: Favorito[]) {
     if (this.storageKey) {
