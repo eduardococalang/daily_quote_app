@@ -9,11 +9,7 @@ import { FavoritosService } from '../../services/favoritos.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FavoritoModalComponent } from '../favorito-modal/favorito-modal.component';
 import { Favorito } from '../../models/favorito.model';
-
-
-
-
-
+import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
 
 @Component({
   selector: 'app-favoritos',
@@ -44,8 +40,9 @@ export class FavoritosComponent {
     private snackBar: MatSnackBar,
     private authService: SocialAuthService,
     private favoritosService: FavoritosService,
+    private favoritosFirebase: FavoritosFirebaseService,
     private dialog: MatDialog
-  ) {}
+  ) {}// fin constructor
 
   ngOnInit() {
     // Comprobar si hay usuario autenticado y cargar favoritos
@@ -70,21 +67,28 @@ export class FavoritosComponent {
         this.favoritosKey = '';
       }
     });
-  }
+  } // fin ngOnInit
 
   eliminarFavorito(index: number) {
+    const favoritoEliminado = this.favoritos[index];
     this.favoritos.splice(index, 1);
     if (this.favoritosKey) {
       localStorage.setItem(this.favoritosKey, JSON.stringify(this.favoritos));
     }
-    this.mostrarNotificacion('❌ Favorito eliminado');
+
+    if(favoritoEliminado && favoritoEliminado.palabra) {
+      console.log("decremento para :", favoritoEliminado.palabra);
+      this.favoritosFirebase.decrementarFavorito(favoritoEliminado.palabra);
   }
+      this.mostrarNotificacion('❌ Favorito eliminado');
+  }// fin eliminarFavorito
 
   compartirFavoritoWhatsApp(favorito: string) {
     const texto = `⭐ ${this.data.palabra}\n\n📖 Definición: ${this.data.definicion}\n✍️ Ejemplo: ${this.data.ejemplo}`;
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
-  }
+  }// fin compartirFavoritoWhatsApp
+
 
   mostrarNotificacion(mensaje: string) {
     this.snackBar.open(mensaje, 'Cerrar', {
@@ -92,7 +96,7 @@ export class FavoritosComponent {
       horizontalPosition: 'center',
       verticalPosition: 'bottom',
     });
-  }
+  }// fin mostrarNotificacion
 
   //abrir modal
   abrirFavorito(favorito: Favorito) {
@@ -102,6 +106,6 @@ export class FavoritosComponent {
       enterAnimationDuration: '300ms',
       exitAnimationDuration: '300ms'
     });
-  }
+  }// fin abrirFavorito
   
-}
+}// fin FavoritosComponent
