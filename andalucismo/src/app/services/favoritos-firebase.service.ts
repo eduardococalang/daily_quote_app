@@ -1,8 +1,9 @@
 /*
-Este servicio se encarga de gestionar los favoritos en Firebase
-
+Este servicio se encarga de gestionar los favoritos en Firebase 
 */ 
 
+import { onSnapshot } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { Firestore, doc, getDoc, setDoc, updateDoc } from '@angular/fire/firestore';
 
@@ -43,6 +44,24 @@ export class FavoritosFirebaseService {
     }
 
 
+  }
+
+  //Esto devuelve un Observable<number> que emite cada vez que el contador cambia en Firebase.
+  getContadorObservable(palabra: string): Observable<number> {
+    return new Observable<number>((observer) => {
+      const docRef = doc(this.firestore, 'favoritos_globales', palabra);
+  
+      return onSnapshot(docRef, (docSnap) => {
+        if (docSnap.exists()) {
+          observer.next(docSnap.data()['contador'] || 0);
+        } else {
+          observer.next(0);
+        }
+      }, (error) => {
+        console.error("Error en onSnapshot:", error);
+        observer.error(error);
+      });
+    });
   }
 }
 

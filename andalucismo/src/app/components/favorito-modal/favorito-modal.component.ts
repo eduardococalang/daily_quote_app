@@ -6,6 +6,8 @@ import { MatCardModule } from '@angular/material/card';
 import { Favorito } from '../../models/favorito.model';
 import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
 import { OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-favorito-modal',
@@ -16,6 +18,8 @@ import { OnInit } from '@angular/core';
 })
 export class FavoritoModalComponent {
    contador: number = 0;
+   private contadorSub!: Subscription;
+  favoritosFirestore: any;
 
   constructor(
     public dialogRef: MatDialogRef<FavoritoModalComponent>,
@@ -24,23 +28,36 @@ export class FavoritoModalComponent {
     private favoritosFirebaseService: FavoritosFirebaseService
   ) {}
 
+  // Se ejecuta cuando el componente se inicializa
   ngOnInit() {
-    this.favoritosFirebaseService.obtenerContador(this.data.palabra). then(contador => {
+    
+    this.contadorSub = this.favoritosFirebaseService
+    .getContadorObservable(this.data.palabra)
+    .subscribe((contador: number) => {
       this.contador = contador;
     });
-
+  }
+  // Se ejecuta cuando el componente se destruye
+  ngOnDestroy() {
+    if (this.contadorSub) {
+      this.contadorSub.unsubscribe();
+    }
   }
 
+  // Método cierra el modal
   cerrar() {
     this.dialogRef.close();
   }
 
+  // Método envía un mensaje de WhatsApp
   compartirFavorito() {
     const texto = `⭐ ${this.data.palabra}\n\n📖 Definición: ${this.data.definicion}\n✍️ Ejemplo: ${this.data.ejemplo}`;
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
   }
 
+  
+  // Método copiar al portapapeles
   copiarFavorito() {
     navigator.clipboard.writeText(this.data.palabra).then(() => {
       alert("✅ Aforismo copiado al portapapeles");
