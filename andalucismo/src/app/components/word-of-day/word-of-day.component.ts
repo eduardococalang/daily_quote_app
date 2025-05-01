@@ -10,12 +10,11 @@ import { trigger, transition, style, animate } from '@angular/animations';
 import { ChangeDetectorRef } from '@angular/core';
 import { Favorito } from '../../models/favorito.model';
 import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
-import { RankingComponent } from '../ranking/ranking.component';
 
 
 @Component({
   selector: 'app-word-of-day',
-  imports: [CommonModule, MatCardModule, GoogleSigninButtonModule, MatSnackBarModule, RankingComponent],
+  imports: [CommonModule, MatCardModule, GoogleSigninButtonModule, MatSnackBarModule],
   providers: [MatSnackBar],
   templateUrl: './word-of-day.component.html',
   styleUrl: './word-of-day.component.scss',

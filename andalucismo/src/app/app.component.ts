@@ -5,6 +5,7 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { CommonModule } from '@angular/common';
 
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, WordOfDayComponent, FooterComponent, CommonModule, FavoritosComponent],
@@ -12,5 +13,7 @@ import { CommonModule } from '@angular/common';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
+
   title = 'andalucismo';
+  isLogged: any;
 }
