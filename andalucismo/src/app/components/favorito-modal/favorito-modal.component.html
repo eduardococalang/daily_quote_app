@@ -1,6 +1,9 @@
 <mat-card>
     <mat-card-content>
       <h2>{{ data.palabra }}</h2>
+      <p style="font-weight: bold; color: lightsalmon;">
+        "❤️ => <strong> {{ contador }} </strong> {{ contador === 1 ? 'vez' : 'veces' }}."  
+      </p>
       <p><strong>Definición:</strong> {{ data.definicion }}</p>
       <p><strong>Ejemplo:</strong> {{ data.ejemplo }}</p>
     </mat-card-content>

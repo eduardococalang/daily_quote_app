@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { Favorito } from '../../models/favorito.model';
+import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-favorito-modal',
@@ -13,11 +15,21 @@ import { Favorito } from '../../models/favorito.model';
   styleUrls: ['./favorito-modal.component.scss']
 })
 export class FavoritoModalComponent {
+   contador: number = 0;
 
   constructor(
     public dialogRef: MatDialogRef<FavoritoModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: Favorito
+    @Inject(MAT_DIALOG_DATA) 
+    public data: Favorito,
+    private favoritosFirebaseService: FavoritosFirebaseService
   ) {}
+
+  ngOnInit() {
+    this.favoritosFirebaseService.obtenerContador(this.data.palabra). then(contador => {
+      this.contador = contador;
+    });
+
+  }
 
   cerrar() {
     this.dialogRef.close();
