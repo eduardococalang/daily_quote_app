@@ -6,10 +6,22 @@ import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-ranking',
-  imports: [],
+  imports: [CommonModule, MatCardModule],
+  standalone: true,
   templateUrl: './ranking.component.html',
   styleUrl: './ranking.component.scss'
 })
-export class RankingComponent {
+export class RankingComponent implements OnInit{
+  ranking: {palabra: string, contador: number }[] = [];
 
+  constructor(
+    private favoritosFirebaseService: FavoritosFirebaseService
+  ) {}
+
+
+  ngOnInit(): void {
+    this.favoritosFirebaseService.obtenerRankingTopN(10).then((res) =>{
+      this.ranking = res;
+    });
+} 
 }

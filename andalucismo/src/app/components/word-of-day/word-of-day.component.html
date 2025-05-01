@@ -17,6 +17,13 @@
       <button (click)="compartirAforismo()">📋 Compartir aforismo</button>
       <button (click)="compartirEnWhatsApp()">📱 Compartir en WhatsApp</button>
     </section>
+
+    <div *ngIf="isLogged" class="thmo-contenedor">
+      <section class="word-card">
+       <app-ranking/>
+      </section>
+    </div>
+
     <!--<button (click)="reproducirAudio()">🔊 Escuchar</button>--> 
     <div class="auth">
       <div *ngIf="!isLogged">
@@ -29,6 +36,8 @@
       </div>
     </div>
     </div>
+
+
     
   
     <section class="rating">
