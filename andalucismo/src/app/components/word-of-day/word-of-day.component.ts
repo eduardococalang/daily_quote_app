@@ -79,7 +79,7 @@ export class WordOfDayComponent {
     const diffTime = Math.abs(today.getTime() - startDate.getTime());
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const index = diffDays % glosario.length;
-    return glosario[index+19];
+    return glosario[index+9];
   }
   
 

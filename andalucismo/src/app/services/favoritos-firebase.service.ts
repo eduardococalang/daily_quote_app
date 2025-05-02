@@ -110,5 +110,28 @@ export class FavoritosFirebaseService {
       return [];
     }
   }// fin obtenerRankingTopN
+
+  // Método para obtener un Observable que emite el ranking de los N favoritos más populares
+  getRankingObservable(n: number): Observable<{ palabra: string; contador: number }[]> {
+    return new Observable(observer => {
+      const colRef = collection(this.firestore, 'favoritos_globales');
+      const q = query(colRef, orderBy('contador', 'desc'), limit(n));
+  
+      const unsubscribe = onSnapshot(q, (snapshot) => {
+        const ranking = snapshot.docs.map(doc => ({
+          palabra: doc.id,
+          contador: doc.data()['contador'] || 0
+        }));
+        observer.next(ranking);
+      }, (error) => {
+        console.error("Error en snapshot de ranking:", error);
+        observer.error(error);
+      });
+  
+      return () => unsubscribe(); // Cleanup
+    });
+  }// fin getRankingObservable
+
+  
 }
 

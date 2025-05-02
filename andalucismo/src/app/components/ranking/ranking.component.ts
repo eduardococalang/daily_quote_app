@@ -2,6 +2,7 @@ import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
 import { MatCardModule } from '@angular/material/card';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -13,15 +14,31 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class RankingComponent implements OnInit{
   ranking: {palabra: string, contador: number }[] = [];
+  private rankingSub!:Subscription;
 
   constructor(
     private favoritosFirebaseService: FavoritosFirebaseService
   ) {}
 
 
+  /*
   ngOnInit(): void {
     this.favoritosFirebaseService.obtenerRankingTopN(10).then((res) =>{
       this.ranking = res;
     });
 } 
+    */
+
+ngOnInit(): void {
+  this.rankingSub = this.favoritosFirebaseService.getRankingObservable(5)
+    .subscribe(data => {
+      this.ranking = data;
+    });
+}
+
+
+ngOnDestroy(): void {
+  this.rankingSub?.unsubscribe
+  }
+
 }
