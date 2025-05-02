@@ -19,7 +19,8 @@
 
       <mat-card-actions>
         <button mat-button color="primary" (click)="cambiarPalabraAleatoria()">🔄 Otra palabra</button>
-      </mat-card-actions>
+        <button *ngIf="palabraActual.palabra !== palabraHoy.palabra" color="accent" (click)="volverPalabraHoy()">🔙 Volver a la palabra del día</button>
+      </mat-card-actions> 
       
     </section>
 

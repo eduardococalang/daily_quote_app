@@ -77,6 +77,8 @@ export class WordOfDayComponent {
 
   }
 
+  // Método para obtener la palabra del día
+  // Se basa en la fecha actual y el índice del glosario
   getThmoOfTheDay(): Thmo {
     const startDate = new Date(2024, 0, 1); // 1 de enero 2024
     const today = new Date();
@@ -86,6 +88,8 @@ export class WordOfDayComponent {
     return glosario[index+9];
   }
 
+  // Método para cambiar la palabra actual por una aleatoria del glosario
+  // Evita repetir la palabra del día
   cambiarPalabraAleatoria() {
     let nueva: Thmo;
     do {
@@ -95,15 +99,16 @@ export class WordOfDayComponent {
   
     this.palabraActual = nueva;
   }
-  
-  
 
-
+  // Método para reproducir el audio de la palabra actual
+  // Si el audio no está disponible, muestra una notificación
   reproducirAudio() {
     const audio = new Audio(this.audioUrl);
     audio.play().catch(()=> alert("Audio aún no disponible"));
   }
 
+  //Método para guardar favoritos
+  // Verifica si el usuario está autenticado y si la palabra ya está guardada
   guardarFavorito() {
     if (!this.isLogged) {
       this.mostrarNotificacion("⚠️ Debes iniciar sesión para guardar favoritos");
@@ -132,7 +137,7 @@ export class WordOfDayComponent {
   
   
   
-  
+//Método para compartir favorito
 compartirAforismo() {
   
   const favorito: Favorito = {
@@ -147,8 +152,9 @@ compartirAforismo() {
   }).catch(err => {
     this.mostrarNotificacion("ERROR al copiar Aforismo al portapapeles");
   });
-}
+}//end compartirAforismo
 
+// Método para compartir en WhatsApp
 compartirEnWhatsApp() {
 
   const favorito: Favorito = {
@@ -160,8 +166,9 @@ compartirEnWhatsApp() {
   const texto = `"${favorito.palabra}"\n\nDefinición: ${favorito.definicion}\nEjemplo: ${favorito.ejemplo}`;
   const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
   window.open(url, '_blank');
-}
+}//end compartirEnWhatsApp
   
+
   //metodo mostar notificaciones
   mostrarNotificacion(mensaje: string) {
     this.snackBar.open(mensaje, 'Cerrar', {
@@ -170,6 +177,12 @@ compartirEnWhatsApp() {
       verticalPosition: 'bottom',
     });
   }
+
+  //Método para volver a palabra del día sin tener que actializar navegador
+  volverPalabraHoy() {
+    this.palabraActual = this.palabraHoy;
+  }
+
 
 valorar(){
   this.mostrarNotificacion("✅GRACIAS POR VALORAR NUESTRO TRABAJO");
