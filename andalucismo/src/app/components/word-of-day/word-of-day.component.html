@@ -1,9 +1,22 @@
 
-<div class="contenedor-header"><header>
+<div class="contenedor-header">
+  <header>
     <h1>A n d a l u c í<span class="thmo"> - T h m o</span></h1>
-    <div id="google-btn"></div>
+    
+      <div class="auth">
+        <div *ngIf="!isLogged">
+          <asl-google-signin-button class="boton-google"></asl-google-signin-button>
+        </div>
+        
+        <div *ngIf="isLogged">
+          <p>Bienvenido, {{ user?.name }}!</p>
+          <button (click)="signOut()">🚪 Cerrar sesión</button>
+        </div>
+      </div>
   </header>
 </div>
+
+
 <main>
     <div class="thmo-contenedor">
     <section class="word-card">
@@ -17,7 +30,7 @@
       <button (click)="compartirAforismo()">📋 Compartir aforismo</button>
       <button (click)="compartirEnWhatsApp()">📱 Compartir en WhatsApp</button>
 
-      <mat-card-actions>
+      <mat-card-actions *ngIf="isLogged">
         <button mat-button color="primary" (click)="cambiarPalabraAleatoria()">🔄 Otra palabra</button>
         <button *ngIf="palabraActual.palabra !== palabraHoy.palabra" color="accent" (click)="volverPalabraHoy()">🔙 Volver a la palabra del día</button>
       </mat-card-actions> 
@@ -25,25 +38,8 @@
     </section>
 
     <!--<button (click)="reproducirAudio()">🔊 Escuchar</button>--> 
-    <div class="auth">
-      <div *ngIf="!isLogged">
-        <asl-google-signin-button></asl-google-signin-button>
-      </div>
-      
-      <div *ngIf="isLogged">
-        <p>Bienvenido, {{ user?.name }}!</p>
-        <button (click)="signOut()">🚪 Cerrar sesión</button>
-      </div>
-    </div>
-    </div>
-
-
     
-  
-    <section class="rating">
-      <p>¿Te gusta la app?</p>
-      <div id="stars" (click)="valorar()">⭐⭐⭐⭐⭐</div>
-    </section>
+    </div>
 
 
   </main>

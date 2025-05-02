@@ -1,0 +1,15 @@
+<div style="text-align: center; margin-top: 20px;">
+    <h3>⭐ Valora esta app</h3>
+    <div>
+      <button mat-button *ngFor="let n of [1,2,3,4,5]"
+      [disabled]="!userId"
+      (click)="valorar(n)">
+        {{ '⭐'.repeat(n) }}
+      </button>
+    </div>
+  
+    <p *ngIf="votos > 0">
+      Promedio actual: <strong>{{ promedio | number: '1.1-2' }}</strong> ({{ votos }} valoraciones)
+    </p>
+  </div>
+  

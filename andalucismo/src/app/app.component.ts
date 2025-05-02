@@ -4,11 +4,12 @@ import { WordOfDayComponent } from "./components/word-of-day/word-of-day.compone
 import { FooterComponent } from "./components/footer/footer.component";
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { CommonModule } from '@angular/common';
+import { RatingAppComponent } from "./components/rating/rating.component";
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, WordOfDayComponent, FooterComponent, CommonModule, FavoritosComponent],
+  imports: [RouterOutlet, WordOfDayComponent, FooterComponent, CommonModule, FavoritosComponent, RatingAppComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

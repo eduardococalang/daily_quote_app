@@ -184,11 +184,6 @@ compartirEnWhatsApp() {
   }
 
 
-valorar(){
-  this.mostrarNotificacion("✅GRACIAS POR VALORAR NUESTRO TRABAJO");
-}
-
-
   signOut(): void {
     this.authService.signOut();
   }
