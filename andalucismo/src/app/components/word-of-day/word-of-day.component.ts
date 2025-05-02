@@ -43,20 +43,24 @@ export class WordOfDayComponent {
   isLogged: boolean = false;
   favoritosKey: string | undefined;
   favoritos: any[] | undefined;
+  public palabraActual: Thmo; // Declared as a class property
+   public palabraHoy: any;
+
  
   constructor(
     private authService: SocialAuthService,
     private snackBar: MatSnackBar,
     private cdr: ChangeDetectorRef,
     private favoritosService: FavoritosService,
-    private favoritosFirebaseService: FavoritosFirebaseService
-
+    private favoritosFirebaseService: FavoritosFirebaseService,
   ) {
     this.todayThmo = this.getThmoOfTheDay();
     this.palabra = this.todayThmo.palabra;
     this.definicion = this.todayThmo.definicion;
     this.ejemplo = this.todayThmo.ejemplo;
     this.audioUrl = this.todayThmo.audioUrl;
+    this.palabraHoy = this.getThmoOfTheDay();
+    this.palabraActual = this.palabraHoy;
 
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -81,6 +85,17 @@ export class WordOfDayComponent {
     const index = diffDays % glosario.length;
     return glosario[index+9];
   }
+
+  cambiarPalabraAleatoria() {
+    let nueva: Thmo;
+    do {
+      const randomIndex = Math.floor(Math.random() * glosario.length);
+      nueva = glosario[randomIndex];
+    } while (nueva.palabra === this.palabraHoy.palabra); // evita repetir la del día
+  
+    this.palabraActual = nueva;
+  }
+  
   
 
 
@@ -94,26 +109,27 @@ export class WordOfDayComponent {
       this.mostrarNotificacion("⚠️ Debes iniciar sesión para guardar favoritos");
       return;
     }
-    
+  
     if (!this.user?.email) {
       this.mostrarNotificacion("⚠️ Error con el usuario");
       return;
     }
   
-    if (!this.favoritosService.isFavorito(this.palabra)) {
-      const favorito: Favorito = {
-        palabra: this.palabra,
-        definicion: this.definicion,
-        ejemplo: this.ejemplo
-      };
+    const favorito: Favorito = {
+      palabra: this.palabraActual.palabra,
+      definicion: this.palabraActual.definicion,
+      ejemplo: this.palabraActual.ejemplo
+    };
+  
+    if (!this.favoritosService.isFavorito(favorito.palabra)) {
       this.favoritosService.addFavorito(favorito);
-      console.log("Favorito añadido:", favorito);
-      this.favoritosFirebaseService.incrementarFavorito(this.palabra);
+      this.favoritosFirebaseService.incrementarFavorito(favorito.palabra);
       this.mostrarNotificacion("✅ Palabra guardada como favorita");
     } else {
       this.mostrarNotificacion("⚠️ Palabra ya estaba guardada");
     }
   }
+  
   
   
   

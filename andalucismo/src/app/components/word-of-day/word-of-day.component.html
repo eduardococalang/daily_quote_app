@@ -7,15 +7,20 @@
 <main>
     <div class="thmo-contenedor">
     <section class="word-card">
-      <h2>{{ todayThmo.palabra }}</h2>
+      <h2>{{ palabraActual.palabra }}</h2>
       <br/>
-      <p class="definition">{{ todayThmo.definicion }}</p>
+      <p class="definition">{{ palabraActual.definicion }}</p>
       <br/>
-      <p class="example">Ej: “{{ todayThmo.ejemplo }}”</p>
+      <p class="example">Ej: “{{ palabraActual.ejemplo }}”</p>
       <br/>
       <button (click)="guardarFavorito()" *ngIf="isLogged">⭐ Guardar favorito</button>
       <button (click)="compartirAforismo()">📋 Compartir aforismo</button>
       <button (click)="compartirEnWhatsApp()">📱 Compartir en WhatsApp</button>
+
+      <mat-card-actions>
+        <button mat-button color="primary" (click)="cambiarPalabraAleatoria()">🔄 Otra palabra</button>
+      </mat-card-actions>
+      
     </section>
 
     <!--<button (click)="reproducirAudio()">🔊 Escuchar</button>--> 

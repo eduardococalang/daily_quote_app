@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Favorito } from '../models/favorito.model'; // importa el modelo
+
 @Injectable({
   providedIn: 'root',
 })
