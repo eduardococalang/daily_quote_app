@@ -134,7 +134,14 @@ export class WordOfDayComponent {
   
   
 compartirAforismo() {
-  const texto = `"${this.palabra}"\n\nDefinición: ${this.definicion}\nEjemplo: ${this.ejemplo}`;
+  
+  const favorito: Favorito = {
+    palabra: this.palabraActual.palabra,
+    definicion: this.palabraActual.definicion,
+    ejemplo: this.palabraActual.ejemplo
+  };
+
+  const texto = `"${favorito.palabra}"\n\nDefinición: ${favorito.definicion}\nEjemplo: ${favorito.ejemplo}`;
   navigator.clipboard.writeText(texto).then(() => {
     this.mostrarNotificacion("✅ Aforismo copiado al portapapeles");
   }).catch(err => {
@@ -143,7 +150,14 @@ compartirAforismo() {
 }
 
 compartirEnWhatsApp() {
-  const texto = `"${this.palabra}"\n\nDefinición: ${this.definicion}\nEjemplo: ${this.ejemplo}`;
+
+  const favorito: Favorito = {
+    palabra: this.palabraActual.palabra,
+    definicion: this.palabraActual.definicion,
+    ejemplo: this.palabraActual.ejemplo
+  };
+  
+  const texto = `"${favorito.palabra}"\n\nDefinición: ${favorito.definicion}\nEjemplo: ${favorito.ejemplo}`;
   const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
   window.open(url, '_blank');
 }
