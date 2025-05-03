@@ -14,7 +14,7 @@ import { FavoritosFirebaseService } from '../../services/favoritos-firebase.serv
 
 @Component({
   selector: 'app-word-of-day',
-  imports: [CommonModule, MatCardModule, GoogleSigninButtonModule, MatSnackBarModule],
+  imports: [CommonModule, MatCardModule, GoogleSigninButtonModule, MatSnackBarModule ],
   providers: [MatSnackBar],
   templateUrl: './word-of-day.component.html',
   styleUrl: './word-of-day.component.scss',
@@ -50,7 +50,6 @@ export class WordOfDayComponent {
   constructor(
     private authService: SocialAuthService,
     private snackBar: MatSnackBar,
-    private cdr: ChangeDetectorRef,
     private favoritosService: FavoritosService,
     private favoritosFirebaseService: FavoritosFirebaseService,
   ) {
@@ -183,11 +182,10 @@ compartirEnWhatsApp() {
     this.palabraActual = this.palabraHoy;
   }
 
-
-  signOut(): void {
-    this.authService.signOut();
-  }
-
+  /*
+  
+*/
+  
 
 
 }

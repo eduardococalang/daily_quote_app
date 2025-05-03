@@ -1,20 +1,4 @@
 
-<div class="contenedor-header">
-  <header>
-    <h1>A n d a l u c í<span class="thmo"> - T h m o</span></h1>
-    
-      <div class="auth">
-        <div *ngIf="!isLogged">
-          <asl-google-signin-button class="boton-google"></asl-google-signin-button>
-        </div>
-        
-        <div *ngIf="isLogged">
-          <p>Bienvenido, {{ user?.name }}!</p>
-          <button (click)="signOut()">🚪 Cerrar sesión</button>
-        </div>
-      </div>
-  </header>
-</div>
 
 
 <main>
@@ -44,5 +28,3 @@
 
   </main>
   
-
-

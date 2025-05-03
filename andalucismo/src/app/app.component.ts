@@ -5,11 +5,12 @@ import { FooterComponent } from "./components/footer/footer.component";
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { CommonModule } from '@angular/common';
 import { RatingAppComponent } from "./components/rating/rating.component";
+import { HeaderComponent } from './components/header/header.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, WordOfDayComponent, FooterComponent, CommonModule, FavoritosComponent, RatingAppComponent],
+  imports: [RouterOutlet, WordOfDayComponent, FooterComponent, CommonModule, FavoritosComponent, RatingAppComponent, HeaderComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
