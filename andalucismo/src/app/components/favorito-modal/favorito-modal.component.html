@@ -1,16 +1,17 @@
+
 <mat-card>
     <mat-card-content>
       <h2>{{ data.palabra }}</h2>
       <p style="font-weight: bold; color: lightsalmon;">
-        "Marcada como ⭐: <strong> {{ contador }} </strong> {{ contador === 1 ? 'vez' : 'veces' }}."  
+        "⭐: <strong> {{ contador }} </strong> {{ contador === 1 ? 'vez' : 'veces' }}."  
       </p>
       <p><strong>Definición:</strong> {{ data.definicion }}</p>
       <p><strong>Ejemplo:</strong> {{ data.ejemplo }}</p>
     </mat-card-content>
   
     <mat-card-actions>
-      <button mat-button (click)="copiarFavorito()">📋 Copiar</button>
-      <button mat-button color="primary" (click)="compartirFavorito()">📱 Compartir</button>
+      <button mat-button (click)="copiarFavorito()">📋</button>
+      <button mat-button color="primary" (click)="compartirFavorito()"> <img src="assets/logo-what-small3.png" alt="logo-what"></button>
       <button mat-button color="warn" (click)="cerrar()">Cerrar</button>
     </mat-card-actions>
   </mat-card>

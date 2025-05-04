@@ -12,6 +12,7 @@ import { Favorito } from '../../models/favorito.model';
 import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
 
 
+
 @Component({
   selector: 'app-word-of-day',
   imports: [CommonModule, MatCardModule, GoogleSigninButtonModule, MatSnackBarModule ],

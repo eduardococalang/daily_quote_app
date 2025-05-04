@@ -1,26 +1,69 @@
+.cabecera{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 0 0 10% 10%;
+}
+.auth{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 150px ;  
+}
+
 header {
-    
     font-family: Special Gothic Expanded One;
     font-size: 2rem;
     background-color: #007a33;
     color: white;
     padding: 1rem;
     text-align: center;
-
+    
     h1{
-      font-size: 4.5rem;
-      margin-top: 20px;
+      font-size: 13vw;
+      margin-top: 0 auto
+    }
+    .thmo {
+      color: #e0b000;
     }
   }
 
-  .contenedor-header {
-    height: 200px;
-    box-sizing: border-box;
-    border: 1px solid black;
-    background-color: #007a33;
-    width: 100%;
+  .google-login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 
-  .thmo {
+  .btn-cerrar{
+    background-color: #007a33;
+    color: white;
+    border: none;
+    padding: 0;
+    font-size: 1.5rem;
+    margin-top:8px; 
+  }
+
+
+  .user-info{
+    margin-top:2vw;
+  }
+
+  .mensaje{
+    margin-top: 10px;
+    font-size: 3vw;
+  }
+
+ 
+
+  .bienvenida {
+    font-size:7vw;
+    margin-top: 15px;
+  }
+
+  .nombre-usuario{
     color: #e0b000;
+    font-size: 5vw;
   }

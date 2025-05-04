@@ -10,12 +10,11 @@ import { MatDialog } from '@angular/material/dialog';
 import { FavoritoModalComponent } from '../favorito-modal/favorito-modal.component';
 import { Favorito } from '../../models/favorito.model';
 import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
-import { RankingComponent } from '../ranking/ranking.component';
 
 @Component({
   selector: 'app-favoritos',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatSnackBarModule, RankingComponent],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatSnackBarModule, ],
   templateUrl: './favoritos.component.html',
   styleUrls: ['./favoritos.component.scss'],
   animations: [

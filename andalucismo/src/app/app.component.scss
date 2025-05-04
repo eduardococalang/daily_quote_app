@@ -1,14 +1,19 @@
-.main-container {
-    margin: 0;
-    padding: 0;
+
+
+.main-app-component{
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
+  margin-top: 180px;
 }
 
-.header{
-    display: flex;
-    flex-direction: column;
+.principal{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+
+
+
+
+

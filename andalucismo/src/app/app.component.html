@@ -1,9 +1,24 @@
+<div class="contenedor-principal">
+    <header class="header-component">
+     <app-header></app-header>
+    </header>
 
-<app-header></app-header>
-<app-word-of-day></app-word-of-day>
-<app-rating-app></app-rating-app>
-<app-favoritos></app-favoritos>
-<app-footer></app-footer>
+    <main class="main-app-component">
+        <section class="principal">
+            <app-word-of-day></app-word-of-day>
+            <app-ranking></app-ranking>
+        </section>
 
+        <section class="valor">
+            <app-rating-app></app-rating-app>
+        </section>
+
+        <section class="glosario">
+            <app-favoritos></app-favoritos>
+        </section>
+    </main>
+
+    <app-footer></app-footer>
+</div>
 
 
