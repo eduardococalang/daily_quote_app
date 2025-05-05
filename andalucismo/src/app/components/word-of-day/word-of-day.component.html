@@ -4,15 +4,19 @@
     <div  class="thmo-contenedor">
 
       <section class="word-card" >
-          <h2>{{ palabraActual.palabra }}</h2>
-        <br/>
-        <div>
-          <p class="definition" >{{ palabraActual.definicion }}</p>
+        <div id="layout-card" class="titulo-card">
+          <h2>" {{ palabraActual.palabra }} "</h2>
         </div>
-          <br/>
+        
+        <div id="layout-card" class="definicion-card">
+          <p> <img width="15" height="15" src="https://img.icons8.com/ios/15/hand-right.png" alt="hand-right"/>{{ palabraActual.definicion }}</p>
+        </div>
+
+        <div id="layout-card" class="ejemplo-card">
           <p class="example">Ej: “{{ palabraActual.ejemplo }}”</p>
-        <br/>
-        <div class="btn-card">
+        </div>
+
+        <div id="layout-card" class="btn-card">
           <button (click)="guardarFavorito()" *ngIf="isLogged"><img width="29" height="29" src="https://img.icons8.com/fluency/29/star--v1.png" alt="star--v1"/></button>
           <button (click)="compartirAforismo()"><img width="29" height="29" src="https://img.icons8.com/office/29/making-notes.png" alt="making-notes"/></button>
           <button (click)="compartirEnWhatsApp()"><img src="assets/logo-what-small3.png" alt="logo"></button>
