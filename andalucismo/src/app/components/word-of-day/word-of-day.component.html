@@ -1,18 +1,18 @@
 
 
 
-    <div style="border: 1px solid rgb(198, 10, 10);" class="thmo-contenedor">
+    <div  class="thmo-contenedor">
 
-      <section class="word-card" style="border: 1px solid black;">
-          <h2 style="border: 1px solid black;">{{ palabraActual.palabra }}</h2>
+      <section class="word-card" >
+          <h2>{{ palabraActual.palabra }}</h2>
         <br/>
-        <div style="border: 1px solid black;">
+        <div>
           <p class="definition" >{{ palabraActual.definicion }}</p>
         </div>
           <br/>
-          <p style="border: 1px solid black; "class="example">Ej: “{{ palabraActual.ejemplo }}”</p>
+          <p class="example">Ej: “{{ palabraActual.ejemplo }}”</p>
         <br/>
-        <div style="border: 1px solid black;" class="btn-card">
+        <div class="btn-card">
           <button (click)="guardarFavorito()" *ngIf="isLogged"><img width="29" height="29" src="https://img.icons8.com/fluency/29/star--v1.png" alt="star--v1"/></button>
           <button (click)="compartirAforismo()"><img width="29" height="29" src="https://img.icons8.com/office/29/making-notes.png" alt="making-notes"/></button>
           <button (click)="compartirEnWhatsApp()"><img src="assets/logo-what-small3.png" alt="logo"></button>

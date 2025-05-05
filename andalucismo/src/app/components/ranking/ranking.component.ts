@@ -21,16 +21,8 @@ export class RankingComponent implements OnInit{
   ) {}
 
 
-  /*
-  ngOnInit(): void {
-    this.favoritosFirebaseService.obtenerRankingTopN(10).then((res) =>{
-      this.ranking = res;
-    });
-} 
-    */
-
 ngOnInit(): void {
-  this.rankingSub = this.favoritosFirebaseService.getRankingObservable(5)
+  this.rankingSub = this.favoritosFirebaseService.getRankingObservable(10)
     .subscribe(data => {
       this.ranking = data;
     });
