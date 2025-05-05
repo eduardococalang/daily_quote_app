@@ -1,17 +1,29 @@
-
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
 
 .main-app-component{
+  margin:0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  margin-top: 180px;
+  justify-content: center;
+  align-items: center;
 }
 
 .principal{
+  margin: 0;
+  padding: 0;
   display:flex;
-  flex-direction: row;
-  justify-content: space-between;
+  flex-direction: column;
 }
 
+.glosario{
+  margin: 0;
+  padding: 0;
+}
 
 
 

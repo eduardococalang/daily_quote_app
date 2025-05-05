@@ -1,30 +1,29 @@
 
 
 
-<main>
-    <div class="thmo-contenedor">
-    <section class="word-card">
-      <h2>{{ palabraActual.palabra }}</h2>
-      <br/>
-      <p class="definition">{{ palabraActual.definicion }}</p>
-      <br/>
-      <p class="example">Ej: “{{ palabraActual.ejemplo }}”</p>
-      <br/>
-      <button (click)="guardarFavorito()" *ngIf="isLogged"><img width="29" height="29" src="https://img.icons8.com/fluency/29/star--v1.png" alt="star--v1"/></button>
-      <button (click)="compartirAforismo()"><img width="29" height="29" src="https://img.icons8.com/office/29/making-notes.png" alt="making-notes"/></button>
-      <button (click)="compartirEnWhatsApp()"><img src="assets/logo-what-small3.png" alt="logo"></button>
+    <div style="border: 1px solid rgb(198, 10, 10);" class="thmo-contenedor">
 
-      <mat-card-actions *ngIf="isLogged">
-        <button mat-button color="primary" (click)="cambiarPalabraAleatoria()"><img width="29" height="29" src="https://img.icons8.com/windows/29/refresh.png" alt="refresh"/></button>
-        <button *ngIf="palabraActual.palabra !== palabraHoy.palabra" color="accent" (click)="volverPalabraHoy()"><img width="29" height="29" src="https://img.icons8.com/android/29/return.png" alt="return"/></button>
-      </mat-card-actions> 
-      
-    </section>
+      <section class="word-card" style="border: 1px solid black;">
+          <h2 style="border: 1px solid black;">{{ palabraActual.palabra }}</h2>
+        <br/>
+        <div style="border: 1px solid black;">
+          <p class="definition" >{{ palabraActual.definicion }}</p>
+        </div>
+          <br/>
+          <p style="border: 1px solid black; "class="example">Ej: “{{ palabraActual.ejemplo }}”</p>
+        <br/>
+        <div style="border: 1px solid black;" class="btn-card">
+          <button (click)="guardarFavorito()" *ngIf="isLogged"><img width="29" height="29" src="https://img.icons8.com/fluency/29/star--v1.png" alt="star--v1"/></button>
+          <button (click)="compartirAforismo()"><img width="29" height="29" src="https://img.icons8.com/office/29/making-notes.png" alt="making-notes"/></button>
+          <button (click)="compartirEnWhatsApp()"><img src="assets/logo-what-small3.png" alt="logo"></button>
 
+        <mat-card-actions *ngIf="isLogged">
+          <button mat-button color="primary" (click)="cambiarPalabraAleatoria()"><img width="29" height="29" src="https://img.icons8.com/windows/29/refresh.png" alt="refresh"/></button>
+          <button *ngIf="palabraActual.palabra !== palabraHoy.palabra" color="accent" (click)="volverPalabraHoy()"><img width="29" height="29" src="https://img.icons8.com/android/29/return.png" alt="return"/></button>
+        </mat-card-actions>    
+      </div>
+   
+      </section>
     <!--<button (click)="reproducirAudio()">🔊 Escuchar</button>--> 
-    
-    </div>
 
-
-  </main>
   

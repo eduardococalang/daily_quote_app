@@ -1,35 +1,48 @@
-.fav{
-    border: 1px solid #000;
-    margin: 0;
-    padding:0;
-    width: 250px;
-    height: 30px;
-    margin-top: 0px;
+.favoritos-contenedor {
+ border: 1px solid black;
+ margin: 0;
+ padding: 0;
+ margin-top: 2rem;
+ width:300px;
 }
 
-.favoritos-grid{
-    color: aliceblue;
+.favoritos-list{
+  border: 1px solid rgb(181, 16, 16);
+  display:flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+  width: auto;
 }
 
-.favoritos-list-cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 2rem;
-  }
-  
-  .favoritos-grid {
-    color:antiquewhite;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1rem;
-    width: 100%;
-    max-width: 900px;
-    margin-top: 1rem;
-    padding: 1rem;
-  }
-  
   .favorito-card {
-    padding: 1rem;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    background-color: white;
+   
+  
+   
+  }
+
+  .palabra{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .accion-derecha{
+    display: flex;
+    justify-content: end;
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
   }
   
