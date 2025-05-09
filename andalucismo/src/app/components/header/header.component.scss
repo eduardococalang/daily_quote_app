@@ -1,3 +1,7 @@
+
+//MOBILE FIRST
+@media  (max-width: 750px) {
+  
 .cabecera{
   display: flex;
   flex-direction: column;
@@ -22,8 +26,8 @@ header {
     text-align: center;
     
     h1{
-      font-size: 13vw;
-      margin-top: 0 auto
+      font-size: 12vw;
+      margin-top: 0px ;
     }
     .thmo {
       color: #e0b000;
@@ -49,6 +53,8 @@ header {
 
   .user-info{
     margin-top:2vw;
+    margin-bottom: 1vw;
+
   }
 
   .mensaje{
@@ -67,3 +73,155 @@ header {
     color: #e0b000;
     font-size: 5vw;
   }
+}
+
+// TABLETS
+@media (min-width: 750px) and (max-width: 1250px)  {
+  
+  .cabecera{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0 0 10% 10%;
+  }
+  .auth{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 150px ;  
+  }
+  
+  header {
+      font-family: Special Gothic Expanded One;
+      font-size: 1rem;
+      background-color: #007a33;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+      
+      h1{
+        font-size: 9vw;
+        margin-top: 0 auto
+      }
+      .thmo {
+        color: #e0b000;
+      }
+    }
+  
+    .google-login-container{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  
+    .btn-cerrar{
+      background-color: #007a33;
+      color: white;
+      border: none;
+      padding: 0;
+      font-size: 1.5rem;
+      margin-top:8px; 
+    }
+  
+  
+    .user-info{
+      margin-top:2vw;
+      margin-bottom: 1vw;
+      border: 1px solid red;
+    }
+  
+    .mensaje{
+      margin-top: 10px;
+      font-size: 3vw;
+    }
+  
+   
+  
+    .bienvenida {
+      font-size:2.5vw;
+      margin-top: 15px;
+    }
+  
+    .nombre-usuario{
+      margin-top: 0.2vw;
+      color: #e0b000;
+      font-size: 3vw;
+    }
+  }
+
+
+//ESCRITORIO
+@media (min-width: 1250px)  {
+  
+    .cabecera{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 0 0 10% 10%;
+    }
+    .auth{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 150px ;  
+    }
+    
+    header {
+        font-family: Special Gothic Expanded One;
+        font-size: 1rem;
+        background-color: #007a33;
+        color: white;
+        padding: 1rem;
+        text-align: center;
+        
+        h1{
+          font-size: 90px;
+          margin-top: 0 auto
+        }
+        .thmo {
+          color: #e0b000;
+        }
+      }
+    
+      .google-login-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    
+      .btn-cerrar{
+        background-color: #007a33;
+        padding: 0;
+        margin-top: 0;
+       
+      }
+    
+    
+      .user-info{
+        margin-top:1vw;
+        margin-bottom: 2vw;
+      }
+    
+      .mensaje{
+        margin-top: 10px;
+        font-size: 3vw;
+      }
+    
+     
+    
+      .bienvenida {
+        font-size:2.5vw;
+        margin-top: 15px;
+      }
+    
+      .nombre-usuario{
+        color: #e0b000;
+        font-size: 3vw;
+      }
+    }

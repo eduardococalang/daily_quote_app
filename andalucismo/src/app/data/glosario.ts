@@ -185,5 +185,6 @@ export const glosario: Thmo[] = [
         definicion: "Para referirse a una persona estúpida o tonta.",
         ejemplo: "Eres un vaina",
         audioUrl: ""
-    }
+    },
+  
 ];
