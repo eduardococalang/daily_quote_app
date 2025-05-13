@@ -1,3 +1,32 @@
+@media ( max-width: 769px ){
+    .main-app-component{
+        flex-direction:column;
+        margin:0;
+        padding: 0;
+        }
+        .principal{
+            margin: 0;
+            padding: 0;
+            justify-items: center;
+            gap: 1vw;
+        }
+
+        .principal1{
+            height: 35rem;
+        }
+
+        .principal2{ 
+           
+        } 
+
+        .principal1, .principal2{
+            margin: 0;
+            padding: 0;
+        }
+
+}
+
+
 @media ( min-width: 769px ){
     .main-app-component{
         flex-direction:column;
@@ -13,6 +42,9 @@
             justify-items: center;
             gap: 1vw;
         }
+        .principal1, .principal2{
+            margin: 0;
+            padding: 0;
+        }
 
-    
 }

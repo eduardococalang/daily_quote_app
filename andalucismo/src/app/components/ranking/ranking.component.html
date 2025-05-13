@@ -1,11 +1,16 @@
-<mat-card id="ranking-card">
-    <mat-card-title id="titulo-card">🏆 Ranking Favoritas</mat-card-title>
-    <mat-card-content>
-      <ol>
-        <li *ngFor="let item of ranking">
-          <strong>{{ item.palabra }}</strong> – {{ item.contador }} vez{{ item.contador !== 1 ? 'es' : '' }}
+<mat-card  class="ranking-card"  appearance="outlined" >
+  <mat-card-header class="header-ranking">
+    <mat-card-title class="title">🏆 Favoritas </mat-card-title>   
+  </mat-card-header>
+  
+  <div>
+   
+    <mat-card-content class="body-ranking">
+      <ol class="lista-fav">
+        <li *ngFor="let item of ranking" id="layout-card">
+          <strong>{{ item.palabra }}</strong> – {{ item.contador }} ve{{ item.contador !== 1 ? 'ces' : 'z' }}
         </li>
       </ol>
     </mat-card-content>
-  </mat-card>
-  
+  </div>
+</mat-card >

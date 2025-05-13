@@ -1,13 +1,14 @@
 import { Component, OnInit} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FavoritosFirebaseService } from '../../services/favoritos-firebase.service';
-import { MatCardModule } from '@angular/material/card';
 import { Subscription } from 'rxjs';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-ranking',
-  imports: [CommonModule, MatCardModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule ],
   standalone: true,
   templateUrl: './ranking.component.html',
   styleUrl: './ranking.component.scss'
