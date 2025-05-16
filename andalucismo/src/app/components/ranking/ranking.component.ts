@@ -4,6 +4,8 @@ import { FavoritosFirebaseService } from '../../services/favoritos-firebase.serv
 import { Subscription } from 'rxjs';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { SocialAuthService, GoogleLoginProvider, SocialUser } from '@abacritt/angularx-social-login';
+import { GoogleSigninButtonModule } from '@abacritt/angularx-social-login';
 
 
 @Component({
@@ -14,12 +16,21 @@ import { MatButtonModule } from '@angular/material/button';
   styleUrl: './ranking.component.scss'
 })
 export class RankingComponent implements OnInit{
+  user: SocialUser | null = null;
+  isAuthenticated = false;
+  isLogged: boolean = false;
   ranking: {palabra: string, contador: number }[] = [];
   private rankingSub!:Subscription;
 
   constructor(
-    private favoritosFirebaseService: FavoritosFirebaseService
-  ) {}
+    private favoritosFirebaseService: FavoritosFirebaseService,
+    private authService: SocialAuthService
+  ) {
+    this.authService.authState.subscribe((user)=>{
+      this.user = user;
+      this.isLogged = !!user;
+    })
+  }
 
 
 ngOnInit(): void {

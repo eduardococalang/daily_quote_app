@@ -18,14 +18,105 @@
   }
 
   .word-card {
-    background-color: aliceblue;
     position: relative;
     width: 90vw; 
     height: 35rem; 
     padding: 0; 
     margin: 0; 
+    margin-top: 1.5em;
+    box-shadow: 0 4px 8px rgba(4, 0, 0, 1.7); 
+  } 
+
+  #layout-card {  
+    justify-content: center; 
+    width: 90%; 
+    margin: 1rem; 
+    padding: 0; 
+  } 
+
+  p{
+    font-size: larger;
+  }
+
+  .zona-header {
+    position: sticky;
+    display: flex;
+    justify-content: center;
+    border-top:15px solid  #007a33 ;
+    border-bottom:15px solid  #007a33 ;
+    top: 0;
+    height: 19px;
+    z-index: 1;
+    background-color: 	white ; /* para evitar transparencia */
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .titulo-card {  
+    font-style: oblique; 
+    padding: 0;
+   
+  }  
+
+  .caja-header{
+    width: 100%;
+    justify-content: center;
+
+  }
+
+  .zona-body{
+    background-color: white;
+    font-size: auto;
+    height: 30rem;
+
+  }
+
+  .scroll-area {
+  padding: 0;
+  margin: 0;
+  overflow-y: auto;
+  position: relative;
+}
+
+  mat-card-footer {
+  position: relative;
+  display: flex;
+  bottom: 0;
+  z-index: 0;
+  height: 20vw;
+  background-color: #FFE4E1
+;
+  border-radius: 0 0 10px 10px;
+  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+}
+}
+
+
+//TABLET 
+@media (min-width:769px) and (max-width:1250px) {  
+  :host {
+    display: block;
+    animation: fadeIn 1s ease-in;
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .word-card {
+    position: relative;
+    width: 25rem; 
+    height: 35rem; 
+    padding: 0; 
+    margin: 0; 
     margin-top: 1rem;
-    border-radius: 5vw; 
     box-shadow: 0 4px 8px rgba(4, 0, 0, 1.7); 
   } 
 
@@ -39,8 +130,8 @@
     position: sticky;
     top: 0;
     height: 19px;
-    z-index: 10;
-    background-color: aliceblue; /* para evitar transparencia */
+    z-index: 1;
+    background-color: 	#008B8B ; /* para evitar transparencia */
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
@@ -52,13 +143,14 @@
 
   .zona-body{
     background-color: white;
-    height: 435px;
+    font-size: auto;
+    height: 30rem;
+
   }
 
   .scroll-area {
   padding: 0;
   margin: 0;
-  height: auto;
   overflow-y: auto;
   position: relative;
 }
@@ -66,87 +158,12 @@
   mat-card-footer {
   position: relative;
   bottom: 0;
-  z-index: 10;
-  height: 15px;
+  z-index: 0;
+  height: 90px;
   background-color: aliceblue;
+  border-radius: 0 0 10px 10px;
   box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
 }
-}
-
-
-//TABLET 
-@media (min-width:769px) and (max-width:1250px) {  
-
-
-  .thmo-contenedor {
-    border: 1px solid red;
-    min-height: 251px;
-    margin-top: 2rem;
-    width: 100%;
-
-  }
-
-  :host {
-    display: block;
-    animation: fadeIn 1s ease-in;
-  }
-
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .word-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 40vw;
-    height: 25vw;
-    padding: 0;
-    margin: 0;
-    border-radius: 5vw;
-    box-shadow: 0 4px 8px rgba(4, 0, 0, 1.7);
-  }
-
-  #layout-card {
-    width: 90%;
-    height: auto;
-    margin: 0.25rem;
-    padding: 0;
-  }
-
-  .titulo-card {
-    display: flex;
-    font-style: oblique;
-    justify-content: center;
-  }
-
-  .definicion-card {}
-
-  .ejemplo-card {}
-
-  button {
-    justify-items: space-between;
-    margin-left: 10px;
-    margin-right: 10px;
-    padding: 0;
-    font-weight: bold;
-    background: white;
-  }
-
-  .btn-card {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
 }
 
 //DESKTOP

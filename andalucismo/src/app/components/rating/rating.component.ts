@@ -1,11 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { collection, doc, getDoc, setDoc, Firestore, onSnapshot } from '@angular/fire/firestore';
 import { getAuth, user } from '@angular/fire/auth';
 import { onAuthStateChanged } from 'firebase/auth';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
-
 @Component({
   selector: 'app-rating-app',
   standalone: true,

@@ -53,34 +53,53 @@
 
 // TABLET 
 @media (min-width:750px) and (max-width:1250px) {
-  .ranking-card {
-    background: #f2f2f2;
-    margin-top: 2rem;
-    padding: 5px;
-    width: 100%;
-    box-shadow: 0 4px 8px rgba(4, 0, 0, 1.7);
+ .ranking-card {
+    background-color: #f0f8ff;
+    margin-top: 1rem;   
+    padding: 5px;  
+    width: 25rem ;  
+    border-radius: 5vw; 
+    box-shadow: 0 4px 8px rgba(4, 0, 0, 1.7);  
+  } 
+
+  .header-ranking {   
+   
+  } 
+
+  .title{
+   margin-left: 5rem;
   }
 
-  :host {
-    display: block;
-    animation: fadeIn 1s ease-in;
+  .body-ranking{
+    width: 300px;
+    justify-items: center;
+    margin-left: 3rem;
+
   }
 
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
+  li{
+    padding-bottom: 0.4rem;
   }
+  
 
-  #titulo-card {
-    margin-bottom: 15px;
-  }
+
+
+  :host {    
+    display: block; 
+    animation: fadeIn 1s ease-in; 
+  } 
+
+  @keyframes fadeIn { 
+    from { 
+      opacity: 0; 
+      transform: translateY(20px); 
+    } 
+
+    to { 
+      opacity: 1; 
+      transform: translateY(0); 
+    } 
+  } 
 }
 
 

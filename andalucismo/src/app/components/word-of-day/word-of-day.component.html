@@ -1,19 +1,19 @@
 
 
   <mat-card class="word-card">
-    <mat-card-header class="zona-header">
-      <mat-card-title class="titulo-card">
-        <h2>" {{ palabraActual.palabra }} "</h2>
+    <mat-card-header class="zona-header" >
+      <mat-card-title  class="caja-header">
+        <h2 class="titulo-card">" {{ palabraActual.palabra }} "</h2>
       </mat-card-title>
     </mat-card-header>
     <div class="scroll-area">
     <mat-card-content class="zona-body">
       <div mat-card id="layout-card">
-        <p class="definicion-card"> <img width="15" height="15" src="https://img.icons8.com/ios/15/hand-right.png"
-            alt="hand-right" />{{ palabraActual.definicion }} {{ palabraActual.definicion }}</p>
+        <p class="definicion-card">" <img width="15" height="15" src="https://img.icons8.com/ios/15/hand-right.png"
+            alt="hand-right" /> {{ palabraActual.definicion }} {{ palabraActual.definicion }} "</p>
       </div>
           <div id="layout-card" class="ejemplo-card">
-      <p class="example">Ej: “ {{ palabraActual.ejemplo }} ”</p>
+      <p class="example">Ej: “ {{palabraActual.ejemplo }} ”</p>
     </div>
     </mat-card-content>
   </div>
