@@ -19,7 +19,14 @@
            
         } 
 
-        .principal1, .principal2{
+        .glosario{
+            display: grid;
+            justify-content: center;
+            align-items: center;
+            border: 1px solid green;
+        }
+
+        .principal1, .principal2, .glosario{
             margin: 0;
             padding: 0;
         }

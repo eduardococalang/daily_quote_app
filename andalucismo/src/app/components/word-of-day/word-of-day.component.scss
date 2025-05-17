@@ -24,10 +24,12 @@
     padding: 0; 
     margin: 0; 
     margin-top: 1.5em;
-    box-shadow: 0 4px 8px rgba(4, 0, 0, 1.7); 
+    box-shadow:3px 8px 3px 3px lightgrey; 
+
   } 
 
   #layout-card {  
+    
     justify-content: center; 
     width: 90%; 
     margin: 1rem; 
@@ -42,14 +44,15 @@
     position: sticky;
     display: flex;
     justify-content: center;
+    align-items: center;
     border-top:15px solid  #007a33 ;
     border-bottom:15px solid  #007a33 ;
-    top: 0;
-    height: 19px;
     z-index: 1;
-    background-color: 	white ; /* para evitar transparencia */
+    background-color: white ; /* para evitar transparencia */
     padding: 1rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    border-radius: 10px 10px 0 0;
+    box-shadow: 0 0px 8px rgb(0, 0, 0); 
+    
   }
 
   .titulo-card {  
@@ -70,24 +73,44 @@
     height: 30rem;
 
   }
+  .ejemplo-card{
+    margin: 0;
+    padding: 0;
+    background-color: white;
 
-  .scroll-area {
+    
+  }
+  .scroll-area{
   padding: 0;
   margin: 0;
   overflow-y: auto;
   position: relative;
+  height: auto;
+  background-color: white;   
+
+}
+ .scroll-area::-webkit-scrollbar {
+  display: none; 
+
 }
 
   mat-card-footer {
-  position: relative;
-  display: flex;
-  bottom: 0;
-  z-index: 0;
-  height: 20vw;
-  background-color: #FFE4E1
-;
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  background-color: #046434;
   border-radius: 0 0 10px 10px;
   box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
+
+  button{
+    padding: 0;
+    margin: 0;
+  }
+
+  button:hover{
+    background-color: #E40966;
+    
+  }
 }
 }
 

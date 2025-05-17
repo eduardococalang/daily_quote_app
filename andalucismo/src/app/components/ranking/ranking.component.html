@@ -1,10 +1,5 @@
-<mat-card *ngIf="isLogged" class="ranking-card"  appearance="outlined" >
-  <mat-card-header class="header-ranking">
-    <mat-card-title class="title">🏆 Favoritas </mat-card-title>   
-  </mat-card-header>
-  
-  <div>
-   
+
+  <mat-card class="ranking-card" >
     <mat-card-content class="body-ranking">
       <ol class="lista-fav">
         <li *ngFor="let item of ranking" id="layout-card">
@@ -12,5 +7,4 @@
         </li>
       </ol>
     </mat-card-content>
-  </div>
-</mat-card >
+  </mat-card >
