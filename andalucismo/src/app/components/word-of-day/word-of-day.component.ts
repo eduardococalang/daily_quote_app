@@ -1,5 +1,5 @@
 import { CommonModule, JsonPipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { glosario, Thmo } from '../../data/glosario';
 import { FavoritosService } from '../../services/favoritos.service';
 import { MatCardModule } from '@angular/material/card';
@@ -47,6 +47,10 @@ export class WordOfDayComponent {
   favoritos: any[] | undefined;
   public palabraActual: Thmo; // Declared as a class property
    public palabraHoy: any;
+   @ViewChild('scrollArea') scrollArea!: ElementRef;
+   @ViewChild('sentinelaFinal') sentinelaFinal!: ElementRef;
+
+
 
  
   constructor(
@@ -78,6 +82,22 @@ export class WordOfDayComponent {
 
   }
 
+   ngAfterViewInit() {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        // Si el sentinela es visible (el sticky ha sido empujado hacia arriba)
+        if (entry.isIntersecting) {
+          this.scrollArea.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+      });
+    }, {
+      root: null, // viewport
+      threshold: 1.0 // 100% visible
+    });
+
+    observer.observe(this.sentinelaFinal.nativeElement);
+  }
+
   // Método para obtener la palabra del día
   // Se basa en la fecha actual y el índice del glosario
   getThmoOfTheDay(): Thmo {
@@ -99,6 +119,9 @@ export class WordOfDayComponent {
     } while (nueva.palabra === this.palabraHoy.palabra); // evita repetir la del día
   
     this.palabraActual = nueva;
+
+    // desplaza el scroll al principio de scroll-area
+    this.scrollArea.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   // Método para reproducir el audio de la palabra actual
@@ -182,6 +205,9 @@ compartirEnWhatsApp() {
   //Método para volver a palabra del día sin tener que actializar navegador
   volverPalabraHoy() {
     this.palabraActual = this.palabraHoy;
+
+    // desplaza el scroll al principio de scroll-area
+    this.scrollArea.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   /*

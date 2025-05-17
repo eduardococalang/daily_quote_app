@@ -42,12 +42,13 @@
 
   .zona-header {
     position: sticky;
+    top: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     border-top:15px solid  #007a33 ;
     border-bottom:15px solid  #007a33 ;
-    z-index: 1;
+    z-index: 10;
     background-color: white ; /* para evitar transparencia */
     padding: 1rem;
     border-radius: 10px 10px 0 0;
