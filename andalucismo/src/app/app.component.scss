@@ -2,6 +2,7 @@
     .main-app-component{
         flex-direction:column;
         margin:0;
+        margin-top: 10vw;
         padding: 0;
         }
         .principal{
@@ -16,10 +17,15 @@
         }
 
         .principal2{ 
-
-            border: 1px solid black;
+            margin: 0;
+            padding: 0;
            
         } 
+
+        .valor{
+            border: 1px solid red;
+            padding: 25px;
+        }
 
         .glosario{
             display: grid;

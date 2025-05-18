@@ -19,17 +19,17 @@
 
   .word-card {
     position: relative;
+    background-color: white ; /* para evitar transparencia */
     width: 90vw; 
     height: 35rem; 
     padding: 0; 
     margin: 0; 
     margin-top: 1.5em;
-    box-shadow:3px 8px 3px 3px lightgrey; 
+    box-shadow:10px 10px 2px 2px lightgrey; 
 
   } 
 
   #layout-card {  
-    
     justify-content: center; 
     width: 90%; 
     margin: 0; 
@@ -37,7 +37,11 @@
   } 
 
   p{
+    margin-top:1vh;
+    margin-left: 2vh;
+    margin-bottom: 20px;
     font-size: larger;
+
   }
 
   .zona-header {
@@ -46,20 +50,18 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-top:15px solid  #007a33 ;
-    border-bottom:15px solid  #007a33 ;
+    border-top:30px solid  #007a33 ;
+    border-bottom:30px solid  #007a33 ;
     z-index: 10;
     background-color: white ; /* para evitar transparencia */
     padding: 1rem;
-    border-radius: 10px 10px 0 0;
-    box-shadow: 0 0px 8px rgb(0, 0, 0); 
+    border-radius: 10px 10px 10px 10px;
     
   }
 
   .titulo-card {  
     font-style: oblique; 
-    padding: 0;
-   
+    padding: 5px;
   }  
 
   .caja-header{
@@ -70,10 +72,13 @@
 
   .zona-body{
     background-color: white;
+    justify-content: center;
     font-size: auto;
     height: 30rem;
-
   }
+
+
+
   .ejemplo-card{
     margin: 0;
     padding: 0;
@@ -99,9 +104,9 @@
   display: grid;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
   background-color: #046434;
   border-radius: 0 0 10px 10px;
-  box-shadow: 0 -2px 4px rgba(0,0,0,0.1);
 
   button{
     padding: 0;
