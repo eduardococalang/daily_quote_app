@@ -5,14 +5,18 @@
  width:100%;
 
  //reemplazar por imagen cabecera
- h3{
-  display: flex;
-  justify-content: center;
-  margin-bottom: 3px;
- }
+}
+
+.cabe-fav{
+  #til{
+  width: 15rem;
+  }
+  margin-top: -25px;
+  
 }
 
 .favoritos-list{
+  margin-top: -50px;
   display:flex;
   flex-direction: column;
   align-items: center;

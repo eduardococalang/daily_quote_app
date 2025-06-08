@@ -15,7 +15,6 @@ import { RankingComponent } from './components/ranking/ranking.component';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-
   title = 'andalucismo';
-  isLogged: any;
+
 }

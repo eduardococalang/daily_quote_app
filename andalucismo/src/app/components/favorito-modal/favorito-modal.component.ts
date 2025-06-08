@@ -44,10 +44,15 @@ export class FavoritoModalComponent {
     }
   }
 
+
+  
+
   // Método cierra el modal
   cerrar() {
     this.dialogRef.close();
   }
+
+
 
   // Método envía un mensaje de WhatsApp
   compartirFavorito() {
@@ -56,7 +61,7 @@ export class FavoritoModalComponent {
     window.open(url, '_blank');
   }
 
-  
+  /*
   // Método copiar al portapapeles
   copiarFavorito() {
     navigator.clipboard.writeText(this.data.palabra).then(() => {
@@ -65,4 +70,5 @@ export class FavoritoModalComponent {
       alert("❌ Error al copiar aforismo");
     });
   }
+    */
 }

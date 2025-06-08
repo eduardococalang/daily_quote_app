@@ -1,64 +1,50 @@
 @media ( max-width: 769px ){
+
+    .principal2, .valor{
+        background-color: #F5F5F5;
+    }
+
+
     .main-app-component{
+        display: flex;
         flex-direction:column;
         margin:0;
-        margin-top: 10vw;
         padding: 0;
         }
         .principal{
             margin: 0;
             padding: 0;
+            margin-top: 25px;
+            margin-bottom: 80px;
             justify-items: center;
             gap: 1px;
         }
 
         .principal1{
-            height: 40rem;
         }
 
-        .principal2{ 
-            margin: 0;
-            padding: 0;
-           
+        
+
+        .principal2{  
+           justify-items: center;
         } 
 
         .valor{
-            border: 1px solid red;
+            margin-bottom: 25px;
             padding: 25px;
         }
 
         .glosario{
+            
             display: grid;
             justify-content: center;
             align-items: center;
         }
 
-        .principal1, .principal2, .glosario{
+        .principal1, .glosario{
             margin: 0;
             padding: 0;
         }
 
 }
 
-
-@media ( min-width: 769px ){
-    .main-app-component{
-        flex-direction:column;
-        margin:0;
-        padding: 0;
-        border:5px solid  pink;
-        }
-        .principal{
-            margin: 0;
-            padding: 0;
-            display:grid;
-            grid-template-columns: auto auto;
-            justify-items: center;
-            gap: 1vw;
-        }
-        .principal1, .principal2{
-            margin: 0;
-            padding: 0;
-        }
-
-}

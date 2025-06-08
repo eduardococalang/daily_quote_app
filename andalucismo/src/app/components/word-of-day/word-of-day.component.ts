@@ -106,7 +106,7 @@ export class WordOfDayComponent {
     const diffTime = Math.abs(today.getTime() - startDate.getTime());
     const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
     const index = diffDays % glosario.length;
-    return glosario[index+9];
+    return glosario[index];
   }
 
   // Método para cambiar la palabra actual por una aleatoria del glosario
@@ -187,7 +187,7 @@ compartirEnWhatsApp() {
     ejemplo: this.palabraActual.ejemplo
   };
   
-  const texto = `"${favorito.palabra}"\n\nDefinición: ${favorito.definicion}\nEjemplo: ${favorito.ejemplo}`;
+  const texto = `⭐ ${this.palabra}\n\n📖 Definición: ${this.definicion}\n✍️ Ejemplo: ${this.ejemplo}`;
   const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
   window.open(url, '_blank');
 }//end compartirEnWhatsApp
