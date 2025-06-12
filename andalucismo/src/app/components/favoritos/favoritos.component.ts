@@ -22,7 +22,7 @@ import { WordOfDayComponent } from '../word-of-day/word-of-day.component';
     trigger('fadeAnimation', [
       transition(':enter', [
         style({ opacity: 0 }),
-        animate('300ms ease-out', style({ opacity: 1 }))
+        animate('300ms ease-out', style({ opacity: 1}))
       ]),
       transition(':leave', [
         animate('300ms ease-in', style({ opacity: 0 }))
@@ -36,6 +36,7 @@ export class FavoritosComponent {
   isLogged = false;
   userEmail: string | null = null;
   data: any;
+  ;
 
   constructor(
     private snackBar: MatSnackBar,

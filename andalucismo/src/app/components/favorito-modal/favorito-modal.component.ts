@@ -17,25 +17,25 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./favorito-modal.component.scss']
 })
 export class FavoritoModalComponent {
-   contador: number = 0;
-   private contadorSub!: Subscription;
+  contador: number = 0;
+  private contadorSub!: Subscription;
   favoritosFirestore: any;
 
   constructor(
     public dialogRef: MatDialogRef<FavoritoModalComponent>,
-    @Inject(MAT_DIALOG_DATA) 
+    @Inject(MAT_DIALOG_DATA)
     public data: Favorito,
     private favoritosFirebaseService: FavoritosFirebaseService
-  ) {}
+  ) { }
 
   // Se ejecuta cuando el componente se inicializa
   ngOnInit() {
-    
+
     this.contadorSub = this.favoritosFirebaseService
-    .getContadorObservable(this.data.palabra)
-    .subscribe((contador: number) => {
-      this.contador = contador;
-    });
+      .getContadorObservable(this.data.palabra)
+      .subscribe((contador: number) => {
+        this.contador = contador;
+      });
   }
   // Se ejecuta cuando el componente se destruye
   ngOnDestroy() {
@@ -45,7 +45,7 @@ export class FavoritoModalComponent {
   }
 
 
-  
+
 
   // Método cierra el modal
   cerrar() {
@@ -60,15 +60,4 @@ export class FavoritoModalComponent {
     const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
     window.open(url, '_blank');
   }
-
-  /*
-  // Método copiar al portapapeles
-  copiarFavorito() {
-    navigator.clipboard.writeText(this.data.palabra).then(() => {
-      alert("✅ Aforismo copiado al portapapeles");
-    }).catch(err => {
-      alert("❌ Error al copiar aforismo");
-    });
-  }
-    */
 }

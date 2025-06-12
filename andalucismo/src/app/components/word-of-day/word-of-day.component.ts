@@ -31,7 +31,7 @@ import { MatButtonModule } from '@angular/material/button';
       ])
     ])
   ]
- 
+
 })
 export class WordOfDayComponent {
 
@@ -41,23 +41,19 @@ export class WordOfDayComponent {
   isLogged: boolean = false;
   favoritosKey: string | undefined;
   favoritos: any[] | undefined;
-  public palabraActual: Thmo; // Declared as a class property
-   public palabraHoy: any;
-   @ViewChild('scrollArea') scrollArea!: ElementRef;
-   @ViewChild('sentinelaFinal') sentinelaFinal!: ElementRef;
+  public palabraActual: Thmo;
+  public palabraHoy: any;
 
 
-
- 
   constructor(
     private authService: SocialAuthService,
     private snackBar: MatSnackBar,
     private favoritosService: FavoritosService,
     private favoritosFirebaseService: FavoritosFirebaseService,
   ) {
-      this.todayThmo = this.getThmoOfTheDay();
-      this.palabraHoy = this.todayThmo;
-      this.palabraActual = this.todayThmo;
+    this.todayThmo = this.getThmoOfTheDay();
+    this.palabraHoy = this.todayThmo;
+    this.palabraActual = this.todayThmo;
 
 
     this.authService.authState.subscribe((user) => {
@@ -75,21 +71,6 @@ export class WordOfDayComponent {
 
   }
 
-   ngAfterViewInit() {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        // Si el sentinela es visible (el sticky ha sido empujado hacia arriba)
-        if (entry.isIntersecting) {
-          this.scrollArea.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
-        }
-      });
-    }, {
-      root: null, // viewport
-      threshold: 1.0 // 100% visible
-    });
-
-    observer.observe(this.sentinelaFinal.nativeElement);
-  }
 
   // Método para obtener la palabra del día
   // Se basa en la fecha actual y el índice del glosario
@@ -110,18 +91,15 @@ export class WordOfDayComponent {
       const randomIndex = Math.floor(Math.random() * glosario.length);
       nueva = glosario[randomIndex];
     } while (nueva.palabra === this.palabraHoy.palabra); // evita repetir la del día
-  
-    this.palabraActual = nueva;
 
-    // desplaza el scroll al principio de scroll-area
-    this.scrollArea.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
+    this.palabraActual = nueva;
   }
 
   // Método para reproducir el audio de la palabra actual
   // Si el audio no está disponible, muestra una notificación
   reproducirAudio() {
     const audio = new Audio(this.palabraActual.audioUrl);
-    audio.play().catch(()=> alert("Audio aún no disponible"));
+    audio.play().catch(() => alert("Audio aún no disponible"));
   }
 
   //Método para guardar favoritos
@@ -131,18 +109,18 @@ export class WordOfDayComponent {
       this.mostrarNotificacion("⚠️ Debes iniciar sesión para guardar favoritos");
       return;
     }
-  
+
     if (!this.user?.email) {
       this.mostrarNotificacion("⚠️ Error con el usuario");
       return;
     }
-  
+
     const favorito: Favorito = {
       palabra: this.palabraActual.palabra,
       definicion: this.palabraActual.definicion,
       ejemplo: this.palabraActual.ejemplo
     };
-  
+
     if (!this.favoritosService.isFavorito(favorito.palabra)) {
       this.favoritosService.addFavorito(favorito);
       this.favoritosFirebaseService.incrementarFavorito(favorito.palabra);
@@ -151,41 +129,20 @@ export class WordOfDayComponent {
       this.mostrarNotificacion("⚠️ Palabra ya estaba guardada");
     }
   }
-  
-  
-/* // Método para compartir un aforismo
-//Método para compartir favorito
-compartirAforismo() {
-  
-  const favorito: Favorito = {
-    palabra: this.palabraActual.palabra,
-    definicion: this.palabraActual.definicion,
-    ejemplo: this.palabraActual.ejemplo
-  };
 
-  const texto = `"${favorito.palabra}"\n\nDefinición: ${favorito.definicion}\nEjemplo: ${favorito.ejemplo}`;
-  navigator.clipboard.writeText(texto).then(() => {
-    this.mostrarNotificacion("✅ Aforismo copiado al portapapeles");
-  }).catch(err => {
-    this.mostrarNotificacion("ERROR al copiar Aforismo al portapapeles");
-  });
-}//end compartirAforismo
-*/
+  // Método para compartir en WhatsApp
+  compartirEnWhatsApp() {
+    const favorito: Favorito = {
+      palabra: this.palabraActual.palabra,
+      definicion: this.palabraActual.definicion,
+      ejemplo: this.palabraActual.ejemplo
+    };
 
+    const texto = `⭐ ${favorito.palabra}\n\n📖 Definición: ${favorito.definicion}\n✍️ Ejemplo: ${favorito.ejemplo}`;
+    const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
+    window.open(url, '_blank');
+  }//end compartirEnWhatsApp
 
-// Método para compartir en WhatsApp
-compartirEnWhatsApp() {
-  const favorito: Favorito = {
-    palabra: this.palabraActual.palabra,
-    definicion: this.palabraActual.definicion,
-    ejemplo: this.palabraActual.ejemplo
-  };
-  
-  const texto = `⭐ ${favorito.palabra}\n\n📖 Definición: ${favorito.definicion}\n✍️ Ejemplo: ${favorito.ejemplo}`;
-  const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
-  window.open(url, '_blank');
-}//end compartirEnWhatsApp
-  
 
   //metodo mostar notificaciones
   mostrarNotificacion(mensaje: string) {
@@ -199,15 +156,6 @@ compartirEnWhatsApp() {
   //Método para volver a palabra del día sin tener que actializar navegador
   volverPalabraHoy() {
     this.palabraActual = this.palabraHoy;
-
-    // desplaza el scroll al principio de scroll-area
-    this.scrollArea.nativeElement.scrollTo({ top: 0, behavior: 'smooth' });
   }
-
-  /*
-  
-*/
-  
-
 
 }

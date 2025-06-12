@@ -1,6 +1,7 @@
+
 mat-card {
     background-color: aliceblue;
-    max-width: 400px;
+    max-width: 100%;
     margin: auto;
     padding: 1.5rem;
     text-align: center;
@@ -19,8 +20,8 @@ mat-card {
   
   p {
     font-size: 1.2rem;
-    color: #555;
-    margin-bottom: 1.5rem;
+   
+    margin-bottom: 1.1rem;
   }
   
   mat-card-actions {
