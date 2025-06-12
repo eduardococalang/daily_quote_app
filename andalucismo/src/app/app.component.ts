@@ -11,7 +11,7 @@ import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, WordOfDayComponent, FooterComponent, CommonModule, FavoritosComponent, RatingAppComponent, HeaderComponent, RankingComponent],
+  imports: [ WordOfDayComponent, FooterComponent, CommonModule, FavoritosComponent, RatingAppComponent, HeaderComponent, RankingComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

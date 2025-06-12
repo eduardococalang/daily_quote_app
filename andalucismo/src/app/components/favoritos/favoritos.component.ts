@@ -15,7 +15,7 @@ import { WordOfDayComponent } from '../word-of-day/word-of-day.component';
 @Component({
   selector: 'app-favoritos',
   standalone: true,
-  imports: [CommonModule, MatCardModule, MatButtonModule, MatSnackBarModule,WordOfDayComponent],
+  imports: [CommonModule, MatCardModule, MatButtonModule, MatSnackBarModule,],
   templateUrl: './favoritos.component.html',
   styleUrls: ['./favoritos.component.scss'],
   animations: [
