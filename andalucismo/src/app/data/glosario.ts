@@ -264,5 +264,131 @@ export const glosario: Thmo[] = [
         ejemplo: "Ponte las alpargatas para ir a la feria",
         audioUrl: ""
     },
+    {
+        palabra: "Abarrotao",
+        definicion: "Forma coloquial de decir que algo está lleno o repleto. Se emplea comunmente en Andalucía para describir lugares, eventos o situaciones donde hay mucha gente o cosas acumuladas.",     
+        ejemplo: "El autobús viene abarrotao de gente",
+        audioUrl: ""
+    },
+    {
+        palabra: "Agarrao",
+        definicion: "Forma coloquial de decir que alguien es tacaño o que no quiere gastar dinero. Aunque también puede referirse a un significado más literal de estar agarrado o aferrado a algo.",     
+        ejemplo: "Ese es muy agarrao, nunca paga nada.",
+        audioUrl: ""
+    },
+    {
+        palabra: "Alcaucil",
+        definicion: "Variante regional, especialmente usada en Andalucía occidental , Sudamérica(Argentina, Urugay) y algunas zonas del norte de África para referirse a la alcachofa.",     
+        ejemplo: "Los alcauciles con jamón está que quitan el sentío",
+        audioUrl: ""
+    },
+        {
+        palabra: "Alfayate",
+        definicion: "Sustantivo masculino que significa sastre o persona que cose a medida. Procede del árabe andalusí y se traduce literalmente, el que cose. Fue una voz común en el medioevo andalusí, y su uso se ha mantenido en algunas regiones de Andalucía, especialmente en Granada y Málaga.",     
+        ejemplo: "Fue mi padre alfayete fino, de tijera y dedal para coserle al señorito Don Blas",
+        audioUrl: ""
+    },
+        {
+        palabra: "Almanaque",
+        definicion: "Proviene del árabe y aludía al clima o estaciones. En la Edad Media nombraba tablas astronómicas. En los siglos XIX y XX en España fue una publicación popular con contenidos agrícolas, religiosos o humorísticos",     
+        ejemplo: "He marcado en el almanaque la fecha del 28 de febrero, Día de Andalucía",
+        audioUrl: ""
+    },
+    {
+        palabra: "Alpargata",
+        definicion: "Proviene del árabe andalusí y quizá del catalán o una raíz íbera. Ya en el siglo XIII era un calzado común por su bajo coste y utilidad, muy usado en Andalucía por campesinos y trabajadores humildes. Se caracteriza por su suela de esparto o yute y una parte superior de lona o tela, lo que la hace ligera y fresca, ideal para el clima andaluz.",
+        ejemplo: "Lo mejor para camininar por la feria son las alpargatas",
+        audioUrl: ""
+    },
+    {
+        palabra: "An cá",
+        definicion: "Proviene de la contracción de a/en casa de, mediante elisión típica del andaluz. Une an (a + en) y cá (casa), como parte de los procesos de síncopa y economía lingüística del español meridional.",
+        ejemplo: "Esta noche nos vemos an cá la Carmen",
+        audioUrl: "",
+    },
+    {
+        palabra: "Arsa",
+        definicion: "Expresión de alegría o entusiasmo, similar a 'viva' o 'hurra'. Se usa para animar o celebrar algo.",
+        ejemplo: "¡Arsa el arte que te ha dao tu madre!",
+        audioUrl: "",
+    },
+    {
+        palabra: "Antié",
+        definicion: "deriva de anteayer (ante + ayer), con elisión vocálica y silábica típica del andaluz. Es una forma reducida característica del español meridional, producto de la economía del habla.",
+        ejemplo: "Antié fui a Jerez y me vine con pena negra.",
+        audioUrl: "",
+    },
+    {
+        palabra: "Alcahuete",
+        definicion: "Alcahuete viene del árabe al-qawwād, “mediador amoroso”. En Andalucía se usa como sinónimo de chismoso o metomentodo, con tono humorístico o sarcástico en contextos familiares o vecinales.",
+        ejemplo: "Tú no dices ná, pero lo sabes tó. Eres un alcahuete.",
+        audioUrl: "",
+    },
+    {
+        palabra: "Armatostes",
+        definicion: "Objetos muy pesados poco útiles, deriva del verbo armar con el sufijo expresivo -oste, usado con tono despectivo. Se refiere a algo grande y torpe o mal hecho, y aparece en el castellano popular desde el siglo XIX",
+        ejemplo: "Tengo el trastero lleno de armatostes.",
+        audioUrl: "",
+    },
+    {
+        palabra: "Arsapepa",
+        definicion: "Expresión coloquial para referirse al cierre de el sujetador.",
+        ejemplo: "No me llego a cerrar el arsapepa",
+        audioUrl: "",
+    },
+    {
+        palabra: "Batacazo",
+        definicion: "Sustantivo coloquial que indica una caída violenta o un fracaso rotundo, usado en contextos físicos o figurados como política, deportes o economía.",
+        ejemplo: "Se pegó un batacazo bajando la escalera",
+        audioUrl: "",
+    },
+    {
+        palabra:"Bicha/o",
+        definicion: "La palabra bicha tiene múltiples significados en el español general y en el andaluz en particular. Su valor cambia según el registro, tono y región, por lo que es una palabra rica en matices, animal venenoso, Persona malintencionada, Niño travieso.",
+        ejemplo: "Mi niño está hecho un bichillo , no para quieto.",
+        audioUrl: "",
+    },
+    {
+        palabra: "Botijo , Búcaro",
+        definicion: "El botijo es un recipiente tradicional de barro cocido, con forma redondeada, una o dos asas, un orificio superior para llenarlo de agua y un pitorro fino por el que se bebe. Su principal característica es que mantiene el agua fresca gracias a la transpiración del barro poroso. Búcaro proviene del portugués y del árabe buqqāla, “jarra pequeña”. Se documenta desde el Siglo de Oro en contextos cultos o cortesanos, y lo usaron autores como Lope de Vega o Quevedo.",
+        ejemplo: "El agua del búcaaro está fresca.",
+        audioUrl: "",
+    },
+    {
+        palabra: "Calentito",
+        definicion: "Término coloquial para referirse a los churros. Masa de harina frita, en forma alargada o en espiral (rueda), crujiente por fuera y blanda por dentro, muy consumida en desayunos y meriendas, especialmente acompañada de café o chocolate.",
+        ejemplo: "! Me he comido un papelón de calentitos yo solo ¡",
+        audioUrl: "",
+    },
+    {
+        palabra: "Cachondeo",
+        definicion: "Cachondeo es un sustantivo coloquial que indica burla festiva o falta de seriedad. Deriva de cachondear(se) (de cacho + -ear) y se popularizó en el sur de España desde el siglo XX. Hoy es común en tono informal. Se cuenta que proviene de Zahara de los atunes, donde pasa el Río Cachón. Las mujeres iban a lavar al río haciendo de la reunión una alegre tertulia. Cachón/deo.",
+        ejemplo: "Qué cachondeo hay en la caseta, no paramos de reír.",
+        audioUrl: "",
+    },
+    {
+        palabra: "Chingao",
+        definicion: "Término para referirse a un objeto ó incluso persona que está roto, estropeado o en mal estado. También se usa para describir algo que no funciona correctamente o que está en muy mal estado.",
+        ejemplo: "! La radio hace un ruido muy extraño, parace que se ha chingao ¡",
+        audioUrl: "",
+    },
+    {
+        palabra: "Chochos",
+        definicion: "Tiene varios significados en Andalucía, siendo el principal los altramuces (aperitivo típico de ferias). También puede usarse en tono vulgar para referirse a pezones, vulva o a personas mayores despistadas. Su origen es popular y metafórico",
+        ejemplo: "No hay nada mejor que unos chochos con una cerveza bien fría",
+        audioUrl: "",
+    },
+    {
+        palabra: "Daleao",
+        definicion: "Daleao es una forma andaluza de ladeado, que indica algo torcido o inclinado. Surge por síncopa y apócope del participio. Se usa tanto para objetos como en tono figurado para personas desorientadas o borrachas.",
+        ejemplo: "Ese cuadro los has colgao daleao, está torcido.",
+        audioUrl: "",
+    },
+    {
+        palabra: "Nopahaná",
+        definicion: "contracción fonética del andaluz coloquial que significa no pasa nada. Se forma por elisión de sonidos en el habla rápida y relajada, muy común en zonas como Sevilla, Cádiz o Huelva. Se usa para transmitir calma, comprensión o quitarle importancia a un error o incidente",
+        ejemplo: "Tranquilo, nopahaná, no te preocupes.",
+        audioUrl: "",
+    },
     
 ];

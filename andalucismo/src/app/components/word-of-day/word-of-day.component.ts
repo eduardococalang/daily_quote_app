@@ -35,10 +35,6 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class WordOfDayComponent {
 
-  palabra = "";
-  definicion = "";
-  ejemplo = "";
-  audioUrl = "";
   isAuthenticated = false;
   todayThmo: Thmo;
   user: SocialUser | null = null;
@@ -59,13 +55,10 @@ export class WordOfDayComponent {
     private favoritosService: FavoritosService,
     private favoritosFirebaseService: FavoritosFirebaseService,
   ) {
-    this.todayThmo = this.getThmoOfTheDay();
-    this.palabra = this.todayThmo.palabra;
-    this.definicion = this.todayThmo.definicion;
-    this.ejemplo = this.todayThmo.ejemplo;
-    this.audioUrl = this.todayThmo.audioUrl;
-    this.palabraHoy = this.getThmoOfTheDay();
-    this.palabraActual = this.palabraHoy;
+      this.todayThmo = this.getThmoOfTheDay();
+      this.palabraHoy = this.todayThmo;
+      this.palabraActual = this.todayThmo;
+
 
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -127,7 +120,7 @@ export class WordOfDayComponent {
   // Método para reproducir el audio de la palabra actual
   // Si el audio no está disponible, muestra una notificación
   reproducirAudio() {
-    const audio = new Audio(this.audioUrl);
+    const audio = new Audio(this.palabraActual.audioUrl);
     audio.play().catch(()=> alert("Audio aún no disponible"));
   }
 
@@ -160,7 +153,7 @@ export class WordOfDayComponent {
   }
   
   
-  
+/* // Método para compartir un aforismo
 //Método para compartir favorito
 compartirAforismo() {
   
@@ -177,17 +170,18 @@ compartirAforismo() {
     this.mostrarNotificacion("ERROR al copiar Aforismo al portapapeles");
   });
 }//end compartirAforismo
+*/
+
 
 // Método para compartir en WhatsApp
 compartirEnWhatsApp() {
-
   const favorito: Favorito = {
     palabra: this.palabraActual.palabra,
     definicion: this.palabraActual.definicion,
     ejemplo: this.palabraActual.ejemplo
   };
   
-  const texto = `⭐ ${this.palabra}\n\n📖 Definición: ${this.definicion}\n✍️ Ejemplo: ${this.ejemplo}`;
+  const texto = `⭐ ${favorito.palabra}\n\n📖 Definición: ${favorito.definicion}\n✍️ Ejemplo: ${favorito.ejemplo}`;
   const url = `https://wa.me/?text=${encodeURIComponent(texto)}`;
   window.open(url, '_blank');
 }//end compartirEnWhatsApp
