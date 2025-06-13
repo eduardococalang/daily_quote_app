@@ -8,26 +8,45 @@ import { RatingAppComponent } from "./components/rating/rating.component";
 import { HeaderComponent } from './components/header/header.component';
 import { RankingComponent } from './components/ranking/ranking.component';
 import { SocialAuthService, SocialUser } from '@abacritt/angularx-social-login';
+import { EnConstruccionComponent } from './components/en-construccion/en-construccion.component';
+
 
 @Component({
   selector: 'app-root',
-  imports: [ WordOfDayComponent, FooterComponent, CommonModule, FavoritosComponent, RatingAppComponent, HeaderComponent, RankingComponent],
+  imports: [ 
+    WordOfDayComponent,
+    FooterComponent, 
+    CommonModule, 
+    FavoritosComponent, 
+    RatingAppComponent, 
+    HeaderComponent, 
+    RankingComponent,
+    EnConstruccionComponent
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+
   user: SocialUser | null = null;
   isLogged: boolean = false;
   title = 'andalucismo';
+  isMobileView: boolean = false;
+
   
   constructor(private authService: SocialAuthService) {
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.isLogged = !!user;
     });
+
+    window.addEventListener('resize', () => {
+      this.isMobileView = window.innerWidth <= 749;
+    });
+  }
+   ngOnInit(): void {
+      this.isMobileView = window.innerWidth <= 749;
+  }
   }
 
-}
+

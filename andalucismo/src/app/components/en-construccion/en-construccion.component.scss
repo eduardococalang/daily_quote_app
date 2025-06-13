@@ -1,0 +1,28 @@
+*{margin: 0; padding: 0;}
+
+.contenedor-uno {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  
+  width: 100%;
+}
+
+.giralda {
+    border: 1px solid red;
+     display: flex;
+    justify-content: center;
+}
+
+.alhambra {
+    display: flex;
+    justify-content: center;
+    border: 1px solid rgb(115, 200, 40);
+}
+
+img {
+  
+width: 25%;
+height: auto;
+}
