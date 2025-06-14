@@ -1,28 +1,40 @@
-*{margin: 0; padding: 0;}
-
-.contenedor-uno {
+.container {
+  min-height: 100vh;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  
-  width: 100%;
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
 }
 
-.giralda {
-    border: 1px solid red;
-     display: flex;
-    justify-content: center;
+h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin-bottom: 0.5rem;
 }
 
-.alhambra {
-    display: flex;
-    justify-content: center;
-    border: 1px solid rgb(115, 200, 40);
+p {
+  color: #555;
+  margin: 0.5rem 0 1rem;
 }
 
-img {
-  
-width: 25%;
-height: auto;
+.images {
+margin-left: 75px;
+  display: flex;
+  gap: 25px;
+  justify-content: center;
+  width: fit-content;
+}
+
+.tablet {
+    width: 15rem ;
+}
+.desktop{
+    width: 30rem;
+}
+
+.footer {
+  font-size: 1rem;
+  color: #777;
 }
